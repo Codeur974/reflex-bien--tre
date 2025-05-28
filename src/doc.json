@@ -1,0 +1,115 @@
+[
+  {
+    "id": 1,
+    "title": "Atelier de Réflexologie Plantaire",
+    "date": "2025-05-15",
+    "description": "Un atelier pour découvrir les bienfaits de la réflexologie plantaire et apprendre les techniques de base",
+    "coverImage": "/images/foot.jpg",
+    "images": [
+      "/images/gros_plan_pied.jpg",
+      "/images/IMG__reflexo.jpg",
+      "/images/matériel_de_réflexologie.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Séance de Bien-Être",
+    "date": "2025-06-10",
+    "description": "Une séance dédiée à la relaxation et au bien-être, avec des techniques de massage adaptées.",
+    "coverImage": "/images/pat.picture.jpg",
+    "images": [
+      "/images/photo_de_profil.jpg",
+      "/images/réflexologie_dans le_jardin.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Conférence sur les Bienfaits de la Réflexologie",
+    "date": "2025-07-20",
+    "description": "Une conférence animée par des experts pour explorer les bienfaits de la réflexologie sur le corps et l'esprit.",
+    "coverImage": "/images/pat1_reflexo.jpg",
+    "images": [
+      "/images/matériel_de_réflexologie.jpg",
+      "/images/réflexologie_dans le_jardin.jpg",
+      "/images/IMG__reflexo.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Bien-être en entreprise",
+    "description": "Découvrez les avantages d'intégrer la réflexologie plantaire et la cohérence cardiaque dans votre entreprise pour améliorer la QVCT.",
+    "coverImage": "/images/entreprise.jpg",
+    "sections": [
+      {
+        "title": "Avantages pour l’entreprise",
+        "items": [
+          {
+            "title": "Amélioration de la productivité",
+            "description": "Des employés en meilleure santé et plus heureux sont généralement plus productifs."
+          },
+          {
+            "title": "Réduction de l'absentéisme",
+            "description": "Les programmes de bien-être axés sur la santé physique et mentale peuvent contribuer à réduire l'absentéisme en prévenant les problèmes de santé et en favorisant un mode de vie équilibré."
+          },
+          {
+            "title": "Climat organisationnel positif",
+            "description": "Les initiatives de bien-être contribuent à créer un climat organisationnel positif. Cela peut renforcer la culture d'entreprise, favoriser la collaboration et améliorer les relations entre collègues."
+          },
+          {
+            "title": "Attractivité pour les talents",
+            "description": "Les entreprises qui accordent de l'importance au bien-être de leurs employés peuvent attirer et retenir plus facilement des talents. Un environnement de travail favorable peut être un facteur décisif pour les candidats potentiels."
+          },
+          {
+            "title": "Conformité aux obligations légales",
+            "description": "Dans certains cas, les entreprises peuvent être tenues de mettre en place des politiques de bien-être en conformité avec les obligations légales, ce qui peut également contribuer à éviter d'éventuelles sanctions."
+          }
+        ]
+      },
+      {
+        "title": "Impacts sur les salariés",
+        "items": [
+          {
+            "title": "Amélioration de la santé physique et mentale",
+            "description": "Les programmes de bien-être peuvent encourager des habitudes de vie saines, et fournir des ressources pour la gestion du stress, contribuant ainsi à améliorer la santé globale des employés."
+          },
+          {
+            "title": "Réduction du stress et de l'épuisement professionnel",
+            "description": "Les professionnels du bien-être peuvent proposer des méthodes pour gérer le stress et favoriser l'équilibre entre vie professionnelle et vie privée."
+          },
+          {
+            "title": "Augmentation de la satisfaction au travail",
+            "description": "Les initiatives de bien-être qui répondent aux besoins des employés peuvent contribuer à une plus grande satisfaction au travail, ce qui peut se traduire par une meilleure motivation et engagement."
+          },
+          {
+            "title": "Développement personnel et professionnel",
+            "description": "Les programmes de bien-être peuvent offrir des opportunités de développement personnel et professionnel, comme des sessions de formation sur la gestion du temps, la communication, ou d'autres compétences utiles."
+          },
+          {
+            "title": "Sentiment d'appartenance",
+            "description": "Les activités de bien-être peuvent renforcer le sentiment d'appartenance à l'entreprise en encourageant la participation à des activités collectives et en favorisant une culture d'entreprise positive."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "coverImage": "/images/reflexologie_plantaire.jpg",
+    "coverImage2": "/images/reflexologie_plantaire.jpg",
+    "title": "Pourquoi intégrer la réflexologie plantaire et la cohérence cardiaque dans un programme d’amélioration de la QVTC",
+    "paragraphs": [
+      "La réflexologie plantaire est une technique naturelle qui permet de réguler le stress et ses possibles effets sur la santé. Une séance procure une détente profonde et participe au soulagement des douleurs et tensions musculaires.",
+      "Le postulat est que l’entièreté du corps on retrouve l’ensemble du corps au niveau des pied. Par un toucher spécifique sur certaines zones du pied, appelées zones réflexes, le réflexologue détecte les tensions et favorise leur régulation.",
+      "Le postulat est que ces zones réflexes sont reliées aux organes et que leur stimulation harmonise leur fonctionnement favorisant ainsi un état d’équilibre des grandes fonctions physiologiques.",
+      "Chaque zone réflexe correspond à un organe, une glande ou une partie du corps.",
+      "Je vous propose des séances de réflexologie plantaire de 15-20 min de ciblées sur la détente, et le relâchement musculaire. Qui permettrons à vos agents de se relayer pour un moment de détente."
+    ],
+    "paragraphs2": [
+      "La réflexologie plantaire est une technique naturelle qui permet de réguler le stress et ses possibles effets sur la santé. Une séance procure une détente profonde et participe au soulagement des douleurs et tensions musculaires.",
+      "Le postulat est que l’entièreté du corps on retrouve l’ensemble du corps au niveau des pied. Par un toucher spécifique sur certaines zones du pied, appelées zones réflexes, le réflexologue détecte les tensions et favorise leur régulation.",
+      "Le postulat est que ces zones réflexes sont reliées aux organes et que leur stimulation harmonise leur fonctionnement favorisant ainsi un état d’équilibre des grandes fonctions physiologiques.",
+      "Chaque zone réflexe correspond à un organe, une glande ou une partie du corps.",
+      "Je vous propose des séances de réflexologie plantaire de 15-20 min de ciblées sur la détente, et le relâchement musculaire. Qui permettrons à vos agents de se relayer pour un moment de détente."
+    ]
+  }
+]

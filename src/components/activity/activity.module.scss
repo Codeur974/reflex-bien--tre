@@ -1,0 +1,21 @@
+.container {
+  margin-top: 14rem;
+  padding: 0 20px;
+  background-color: #e0f7fa;
+  height: 60vh;
+}
+.activity {
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+
+  &__works,
+  &__actu {
+    width: 400px;
+    height: 300px;
+    border: 2px solid #b2dfdb;
+    border-radius: 20px;
+    background-color: white;
+    margin-top: -10rem;
+  }
+}
