@@ -1,17 +1,19 @@
 "use client";
 
-import styles from "./slider.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import styles from "./slider.module.scss";
 import { useState, useEffect, useCallback } from "react";
 
 interface SliderProps {
   items: {
-    id: number;
+    _id: string;
     title: string;
-    coverImage: string;
+    cover: string;
   }[];
 }
+
+const backendUrl = "http://localhost:4000"; // à adapter en prod
 
 function Slider({ items }: SliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -22,32 +24,56 @@ function Slider({ items }: SliderProps) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      handleNext(); // Passe à l'image suivante toutes les 3 secondes
+      handleNext();
     }, 3000);
 
-    return () => clearInterval(interval); // Nettoie l'intervalle lorsque le composant est démonté
+    return () => clearInterval(interval);
   }, [handleNext]);
 
   return (
     <div className={styles.slider}>
-      {items.map((item, index) => (
-        <Link key={item.id} href="/public/works">
-          <div
-            className={`${styles.slider__item} ${
-              index === currentIndex ? styles.active : ""
-            }`}
-          >
-            <Image
-              src={item.coverImage}
-              alt={item.title}
-              className={styles.slider__image}
-              width={300}
-              height={200}
-            />
-            <h3 className={styles.slider__title}>{item.title}</h3>
-          </div>
+      <div className={styles.slider__container}>
+        {items.map((item, index) => {
+          const imageUrl =
+            item.cover &&
+            (item.cover.startsWith("http") || item.cover.startsWith("//"))
+              ? item.cover
+              : `${backendUrl}${
+                  item.cover.startsWith("/") ? item.cover : "/" + item.cover
+                }`;
+          console.log("item.cover:", item.cover);
+          console.log("imageUrl:", imageUrl);
+          return (
+            <Link key={item._id} href="/public/works">
+              <div
+                className={`${styles.slider__item} ${
+                  index === currentIndex ? styles.active : ""
+                }`}
+              >
+                {item.cover ? (
+                  <Image
+                    src={imageUrl}
+                    alt={item.title}
+                    width={300}
+                    height={200}
+                    className={styles.slider__image}
+                  />
+                ) : (
+                  <div className={styles.slider__imagePlaceholder}>
+                    Image non disponible
+                  </div>
+                )}
+                <h3 className={styles.slider__title}>{item.title}</h3>
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+      <div className={styles.slider__footer}>
+        <Link href="/public/works" className={styles.linkToWorks}>
+          Voir tous les travaux
         </Link>
-      ))}
+      </div>
     </div>
   );
 }

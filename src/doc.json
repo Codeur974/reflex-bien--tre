@@ -94,22 +94,51 @@
   },
   {
     "id": 5,
-    "coverImage": "/images/reflexologie_plantaire.jpg",
-    "coverImage2": "/images/reflexologie_plantaire.jpg",
+
     "title": "Pourquoi intégrer la réflexologie plantaire et la cohérence cardiaque dans un programme d’amélioration de la QVTC",
     "paragraphs": [
-      "La réflexologie plantaire est une technique naturelle qui permet de réguler le stress et ses possibles effets sur la santé. Une séance procure une détente profonde et participe au soulagement des douleurs et tensions musculaires.",
-      "Le postulat est que l’entièreté du corps on retrouve l’ensemble du corps au niveau des pied. Par un toucher spécifique sur certaines zones du pied, appelées zones réflexes, le réflexologue détecte les tensions et favorise leur régulation.",
-      "Le postulat est que ces zones réflexes sont reliées aux organes et que leur stimulation harmonise leur fonctionnement favorisant ainsi un état d’équilibre des grandes fonctions physiologiques.",
-      "Chaque zone réflexe correspond à un organe, une glande ou une partie du corps.",
-      "Je vous propose des séances de réflexologie plantaire de 15-20 min de ciblées sur la détente, et le relâchement musculaire. Qui permettrons à vos agents de se relayer pour un moment de détente."
+      {
+        "coverImage": "/images/Image3.jpg",
+        "text": "La réflexologie plantaire est une technique naturelle qui permet de réguler le stress et ses possibles effets sur la santé. Une séance procure une détente profonde et participe au soulagement des douleurs et tensions musculaires."
+      },
+      {
+        "text": "Le postulat est que l’entièreté du corps on retrouve l’ensemble du corps au niveau des pied. Par un toucher spécifique sur certaines zones du pied, appelées zones réflexes, le réflexologue détecte les tensions et favorise leur régulation."
+      },
+      {
+        "text": "Le postulat est que ces zones réflexes sont reliées aux organes et que leur stimulation harmonise leur fonctionnement favorisant ainsi un état d’équilibre des grandes fonctions physiologiques."
+      },
+      {
+        "text": "Chaque zone réflexe correspond à un organe, une glande ou une partie du corps."
+      },
+      {
+        "text": "Je vous propose des séances de réflexologie plantaire de 15-20 min de ciblées sur la détente, et le relâchement musculaire. Qui permettrons à vos agents de se relayer pour un moment de détente."
+      }
     ],
     "paragraphs2": [
-      "La réflexologie plantaire est une technique naturelle qui permet de réguler le stress et ses possibles effets sur la santé. Une séance procure une détente profonde et participe au soulagement des douleurs et tensions musculaires.",
-      "Le postulat est que l’entièreté du corps on retrouve l’ensemble du corps au niveau des pied. Par un toucher spécifique sur certaines zones du pied, appelées zones réflexes, le réflexologue détecte les tensions et favorise leur régulation.",
-      "Le postulat est que ces zones réflexes sont reliées aux organes et que leur stimulation harmonise leur fonctionnement favorisant ainsi un état d’équilibre des grandes fonctions physiologiques.",
-      "Chaque zone réflexe correspond à un organe, une glande ou une partie du corps.",
-      "Je vous propose des séances de réflexologie plantaire de 15-20 min de ciblées sur la détente, et le relâchement musculaire. Qui permettrons à vos agents de se relayer pour un moment de détente."
+      {
+        "coverImage2": "/images/Image3.jpg",
+        "text": "La cohérence cardiaque est un état d’équilibre psychologique et physique obtenue par un exercice de respiration. La pratique régulière de la cohérence cardiaque amène un équilibre du système nerveux automatique …. C’est un formidable outil de gestion du stress, à condition d’être pratiquée régulièrement. La découverte, la compréhension puis la mise en œuvre régulière de la cohérence cardiaque peut améliorer grandement la qualité de vie au travail."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Facilité de mise en œuvre",
+    "list": [
+      "- Un petit espace calme suffit",
+      "- Séances courtes de 15 à 30 minutes",
+      "- Intervention occasionnelle ou régulière",
+      "- Horaires flexibles",
+      "- Je viens avec tout mon matériel.",
+      {
+        "text": "Je vous propose, au cours de séance de 15-20 min de :",
+        "sublist": [
+          "Visualiser les effets de la respiration sur l’organisme grâce à l’utilisation d’un capteur et d’un logiciel spécialisé.",
+          "D’expliquer le principe de cohérence cardiaque et ses effets bénéfiques sur la santé",
+          "De pratiquer une session de 5 min de cohérence cardiaque",
+          "D’inciter à une pratique de cohérence cardiaque"
+        ]
+      }
     ]
   }
 ]

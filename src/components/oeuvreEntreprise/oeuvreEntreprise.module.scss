@@ -1,0 +1,21 @@
+.oeuvreEntreprise {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem 0;
+  &__item {
+    font-weight: 700;
+    font-size: 24px;
+    padding-left: 0;
+  }
+  &__subitem {
+    font-weight: 400;
+    color: #555;
+    font-size: 18px;
+    list-style: none;
+  }
+  &__list {
+    font-size: 18px;
+    list-style: none;
+  }
+}

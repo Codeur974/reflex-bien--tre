@@ -10,15 +10,63 @@
     color: #4fc3f7;
   }
   &__text {
+    background-color: #e0f7fa;
+    flex: 1;
     font-size: 1.1rem;
     margin-bottom: 8px;
+    text-align: justify;
   }
   &__content {
-    margin-top: 30px;
-    border: #4fc3f7 1px solid;
-    border-radius: 25px;
     padding: 20px;
     font-style: italic;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  }
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-top: 40px;
+    padding: 0 180px;
+  }
+  &__col {
+    display: flex;
+    flex-direction: column;
+  }
+  &__col:first-child {
+    flex: 2;
+    max-width: 800px;
+  }
+  &__col:first-child .paragraph__block:first-child {
+    display: flex;
+
+    align-items: center;
+    text-align: center;
+  }
+  &__col:last-child {
+    flex: 1;
+    max-width: 500px;
+  }
+  &__col:last-child .paragraph__block {
+    display: block;
+    overflow: auto;
+  }
+  &__col:last-child .paragraph__image {
+    float: left;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    max-width: 100px;
+    border-radius: 10px;
+  }
+  &__image {
+    flex-shrink: 0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  &__block {
+    padding: 1rem;
+    background-color: #e0f7fa;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
   }
 }
