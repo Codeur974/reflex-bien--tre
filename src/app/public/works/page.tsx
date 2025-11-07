@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const backendUrl = "http://localhost:4000"; // à adapter en prod
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
 
 export default function WorksPage() {
   const dispatch = useDispatch<AppDispatch>();

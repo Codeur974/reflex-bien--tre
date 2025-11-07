@@ -14,11 +14,13 @@ const initialState: WorkState = {
   error: null,
 };
 
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
+
 export const fetchWorks = createAsyncThunk(
   "works/fetchWorks",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("http://localhost:4000/api/v1/works");
+      const response = await axios.get(`${API_URL}/api/v1/works`);
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response?.data?.message) {

@@ -10,43 +10,30 @@ function Paragraph() {
   const left = section.paragraphs || [];
   const right = section.paragraphs2 || [];
 
+  const firstImage = left.find(para => para.coverImage)?.coverImage;
+
   return (
     <div className={styles.paragraphContainer}>
       <h2 className={styles.paragraph__title}>{section.title}</h2>
       <div className={styles.paragraph__row}>
-        {/* Colonne de gauche */}
-        <div className={styles.paragraph__col}>
-          {left.map((para, idx) => (
-            <div key={idx} className={styles.paragraph__block}>
-              {para.coverImage && (
-                <Image
-                  width={100}
-                  height={100}
-                  src={para.coverImage}
-                  alt={`Illustration gauche ${idx + 1}`}
-                  className={styles.paragraph__image}
-                />
-              )}
-              <p className={styles.paragraph__text}>{para.text}</p>
-            </div>
-          ))}
-        </div>
-        {/* Colonne de droite */}
-        <div className={styles.paragraph__col}>
-          {right.map((para, idx) => (
-            <div key={idx} className={styles.paragraph__block}>
-              {para.coverImage2 && (
-                <Image
-                  width={100}
-                  height={100}
-                  src={para.coverImage2}
-                  alt={`Illustration droite ${idx + 1}`}
-                  className={styles.paragraph__image}
-                />
-              )}
-              <p className={styles.paragraph__text}>{para.text}</p>
-            </div>
-          ))}
+        {/* Un seul grand bloc */}
+        <div className={styles.paragraph__block}>
+          <div className={styles.paragraph__textWrapper}>
+            {firstImage && (
+              <Image
+                width={150}
+                height={150}
+                src={firstImage}
+                alt="Illustration"
+                className={styles.paragraph__image}
+              />
+            )}
+            {left.map((para, idx) => (
+              <span key={idx} className={styles.paragraph__text}>
+                {para.text}{' '}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>

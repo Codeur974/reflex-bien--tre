@@ -1,9 +1,11 @@
 .container {
   margin-top: 14rem;
-  padding: 0 20px;
-  background-color: #e0f7fa;
+  padding: 0 20px 40px;
+  background: linear-gradient(to bottom, #f8fbff 0%, #e8f5ff 100%);
   height: 60vh;
+  min-height: 500px;
 }
+
 .activity {
   display: flex;
   justify-content: center;
@@ -13,9 +15,183 @@
   &__actu {
     width: 400px;
     height: 300px;
-    border: 2px solid #b2dfdb;
+    border: none;
     border-radius: 20px;
-    background-color: white;
+    background: white;
     margin-top: -10rem;
+    padding: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(95, 215, 176, 0.2),
+                0 0 0 2px rgba(95, 215, 176, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #5fd7b0, #007bff);
+      border-radius: 20px 20px 0 0;
+    }
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(95, 215, 176, 0.3),
+                  0 0 0 2px rgba(95, 215, 176, 0.2);
+    }
+  }
+
+  // Desktop moyen
+  @media (max-width: 1280px) {
+    gap: 5rem;
+
+    &__works,
+    &__actu {
+      width: 350px;
+      height: 280px;
+    }
+  }
+
+  // Tablette
+  @media (max-width: 1024px) {
+    gap: 3rem;
+
+    &__works,
+    &__actu {
+      width: 320px;
+      height: 260px;
+      margin-top: -8rem;
+    }
+  }
+
+  // Tablette portrait
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    &__works,
+    &__actu {
+      width: 90%;
+      max-width: 400px;
+      height: auto;
+      min-height: 250px;
+      margin-top: 0;
+    }
+
+    &__actu {
+      margin-top: -8rem;
+    }
+  }
+
+  // Mobile
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    &__works,
+    &__actu {
+      width: 90%;
+      max-width: 350px;
+      padding: 15px;
+      min-height: 220px;
+      margin-top: 0;
+    }
+
+    &__actu {
+      margin-top: -6rem;
+    }
+
+    &__works {
+      margin-top: 0;
+    }
+  }
+
+  // Petit mobile
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+
+    &__works,
+    &__actu {
+      width: 95%;
+      max-width: 300px;
+      padding: 10px;
+      min-height: 200px;
+      border-radius: 15px;
+      margin-top: 0;
+    }
+
+    &__actu {
+      margin-top: -5rem;
+    }
+
+    &__works {
+      margin-top: 0;
+    }
+  }
+}
+
+.container {
+  // Desktop moyen
+  @media (max-width: 1280px) {
+    margin-top: 12rem;
+    height: 55vh;
+  }
+
+  // Tablette
+  @media (max-width: 1024px) {
+    margin-top: 10rem;
+    height: 50vh;
+    padding: 0 15px;
+  }
+
+  // Tablette portrait
+  @media (max-width: 900px) {
+    height: auto;
+    min-height: 600px;
+    padding-bottom: 3rem;
+  }
+
+  // Mobile
+  @media (max-width: 768px) {
+    margin-top: 8rem;
+    min-height: 550px;
+    padding: 0 10px 2rem;
+  }
+
+  // Petit mobile
+  @media (max-width: 480px) {
+    margin-top: 6rem;
+    min-height: 500px;
+    padding: 0 5px 1.5rem;
+  }
+}
+
+.linkToWorks {
+  display: inline-block;
+  color: white;
+  background: linear-gradient(135deg, #5fd7b0, #007bff);
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(95, 215, 176, 0.3);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(95, 215, 176, 0.4);
+    background: linear-gradient(135deg, #007bff, #5fd7b0);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    padding: 10px 20px;
   }
 }

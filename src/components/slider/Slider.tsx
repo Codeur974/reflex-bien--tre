@@ -13,7 +13,7 @@ interface SliderProps {
   }[];
 }
 
-const backendUrl = "http://localhost:4000"; // à adapter en prod
+const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
 
 function Slider({ items }: SliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);

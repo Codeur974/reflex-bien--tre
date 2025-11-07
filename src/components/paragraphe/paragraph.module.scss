@@ -1,40 +1,113 @@
 .paragraphContainer {
-  padding: 20px;
-  margin: 2rem 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 20px 40px;
+
+  @media (max-width: 768px) {
+    padding: 15px 20px;
+    margin: 1.5rem auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 15px;
+    margin: 1rem auto;
+  }
+
+  @media (max-width: 320px) {
+    padding: 8px;
+  }
 }
 .paragraph {
   &__title {
     font-size: 1.5rem;
     text-align: center;
-    margin-bottom: 1rem;
-    color: #4fc3f7;
+    margin-bottom: 1.5rem;
+    color: #0288d1;
+    font-weight: 700;
+    background: linear-gradient(135deg, rgba(79, 195, 247, 0.08) 0%, rgba(79, 195, 247, 0.15) 100%);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-left: 5px solid #4fc3f7;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 10px rgba(79, 195, 247, 0.2);
+
+    @media (max-width: 768px) {
+      font-size: 1.3rem;
+      padding: 0.75rem 1rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      padding: 0.5rem 0.75rem;
+      border-left: 3px solid #4fc3f7;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 1rem;
+    }
   }
   &__text {
-    background-color: #e0f7fa;
     flex: 1;
     font-size: 1.1rem;
-    margin-bottom: 8px;
+    margin: 0;
+    padding: 0;
     text-align: justify;
-  }
-  &__content {
-    padding: 20px;
-    font-style: italic;
+    line-height: 1.6;
+    text-shadow: 0 3px 10px rgba(79, 195, 247, 0.7);
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 0.9rem;
+    }
   }
   &__row {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 2rem;
     align-items: flex-start;
     margin-top: 40px;
-    padding: 0 180px;
+    padding: 0;
+    width: 100%;
+
+    @media (max-width: 1024px) {
+      gap: 1.5rem;
+      padding: 0;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 0;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 1rem;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 320px) {
+      padding: 0;
+    }
   }
   &__col {
     display: flex;
     flex-direction: column;
+    flex: 1;
   }
   &__col:first-child {
     flex: 2;
-    max-width: 800px;
+    max-width: 100%;
   }
   &__col:first-child .paragraph__block:first-child {
     display: flex;
@@ -44,7 +117,7 @@
   }
   &__col:last-child {
     flex: 1;
-    max-width: 500px;
+    max-width: 100%;
   }
   &__col:last-child .paragraph__block {
     display: block;
@@ -63,10 +136,77 @@
     margin-bottom: 1rem;
   }
   &__block {
-    padding: 1rem;
-    background-color: #e0f7fa;
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+    box-shadow: 0 8px 25px rgba(79, 195, 247, 0.3);
+    border-radius: 12px;
+    border: 1px solid rgba(79, 195, 247, 0.2);
+    transition: all 0.3s ease;
+    width: 100%;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(79, 195, 247, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      padding: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      padding: 1rem;
+    }
+
+    @media (max-width: 320px) {
+      padding: 0.75rem;
+    }
+  }
+
+  &__textWrapper {
+    font-size: 1.15rem;
+    text-align: justify;
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+    color: #5a7a8f;
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 320px) {
+      font-size: 0.95rem;
+    }
+  }
+
+  &__image {
+    float: left;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(79, 195, 247, 0.3);
+    border: 3px solid #4fc3f7;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(79, 195, 247, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      margin-right: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      float: none;
+      display: block;
+      margin: 0 auto 1.5rem;
+    }
   }
 }

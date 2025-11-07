@@ -5,4 +5,30 @@
   align-items: center;
   background-color: black;
   color: white;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 16px;
+
+  // Tablette
+  @media (max-width: 1024px) {
+    height: auto;
+    min-height: 60px;
+    padding: 15px 20px;
+    font-size: 14px;
+  }
+
+  // Mobile
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: 50px;
+    padding: 12px 15px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  // Très petit mobile
+  @media (max-width: 480px) {
+    font-size: 11px;
+    padding: 10px;
+  }
 }

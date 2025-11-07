@@ -3,11 +3,15 @@
   position: relative;
   width: 100%;
   height: calc(100vh - 250px);
+  min-height: 400px;
+  overflow: hidden;
+
   &__img {
     position: relative;
     width: 100%;
     height: 100%;
   }
+
   &__title {
     position: absolute;
     top: 50%;
@@ -18,6 +22,87 @@
     font-family: "Dynalight";
     font-weight: 100;
     text-align: center;
-    text-shadow: 6px 6px 12px rgba(95, 215, 176, 0.8); /* Ombre bleu d'eau */
+    text-shadow: 6px 6px 12px rgba(95, 215, 176, 0.8);
+    padding: 0 20px;
+    width: 100%;
+
+    h2 {
+      line-height: 1.3;
+    }
+  }
+
+  // Desktop moyen
+  @media (max-width: 1280px) {
+    height: calc(100vh - 220px);
+    min-height: 350px;
+
+    &__title {
+      font-size: 3.5rem;
+    }
+  }
+
+  // Tablette
+  @media (max-width: 1024px) {
+    height: calc(100vh - 200px);
+    min-height: 300px;
+    margin-top: 10px;
+
+    &__title {
+      font-size: 2.5rem;
+      padding: 0 30px;
+      text-shadow: 4px 4px 8px rgba(95, 215, 176, 0.8);
+
+      h2 {
+        line-height: 1.4;
+      }
+    }
+  }
+
+  // Mobile
+  @media (max-width: 768px) {
+    height: 400px;
+    min-height: 300px;
+    margin-top: 5px;
+
+    &__title {
+      font-size: 1.8rem;
+      padding: 0 20px;
+      text-shadow: 3px 3px 6px rgba(95, 215, 176, 0.8);
+
+      h2 {
+        line-height: 1.5;
+
+        br {
+          display: none;
+        }
+      }
+    }
+  }
+
+  // Petit mobile
+  @media (max-width: 480px) {
+    height: 350px;
+    min-height: 250px;
+
+    &__title {
+      font-size: 1.3rem;
+      padding: 0 15px;
+      text-shadow: 2px 2px 4px rgba(95, 215, 176, 0.8);
+
+      h2 {
+        line-height: 1.6;
+      }
+    }
+  }
+
+  // Très petit mobile
+  @media (max-width: 360px) {
+    height: 300px;
+    min-height: 200px;
+
+    &__title {
+      font-size: 1.1rem;
+      padding: 0 10px;
+    }
   }
 }
