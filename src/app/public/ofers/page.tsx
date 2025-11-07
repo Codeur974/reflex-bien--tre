@@ -1,7 +1,9 @@
+import Pricing from "@/components/pricing/Pricing";
+
 export default function OfersPage() {
   return (
     <div>
-      <h1>Ofers</h1>
+      <Pricing />
     </div>
   );
 }

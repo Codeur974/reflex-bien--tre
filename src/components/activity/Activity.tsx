@@ -53,7 +53,7 @@ function Activity() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.activity}>
+      <div className={styles.activity} id="evenements">
         <div className={styles.activity__actu}>
           <LastNews news={firstNews} />
         </div>

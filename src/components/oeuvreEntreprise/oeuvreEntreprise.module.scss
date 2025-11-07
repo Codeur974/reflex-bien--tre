@@ -57,97 +57,107 @@
   }
 
   &__wrapper {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
-    padding: 2.5rem;
+    position: relative;
+    padding: 3rem;
     border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(79, 195, 247, 0.2);
-    border: 1px solid rgba(79, 195, 247, 0.2);
+    box-shadow: 0 8px 25px rgba(79, 195, 247, 0.3);
+    border: 2px solid rgba(79, 195, 247, 0.3);
+    overflow: hidden;
+    min-height: 400px;
 
     @media (max-width: 1024px) {
-      padding: 2rem;
+      padding: 2.5rem;
     }
 
     @media (max-width: 768px) {
-      padding: 1.5rem;
+      padding: 2rem;
+      min-height: 350px;
     }
 
     @media (max-width: 480px) {
-      padding: 1rem;
+      padding: 1.5rem;
+      min-height: 300px;
     }
   }
 
   &__content {
+    position: relative;
+    z-index: 1;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 3rem;
-    align-items: flex-start;
+
+    @media (max-width: 1200px) {
+      gap: 2rem;
+    }
 
     @media (max-width: 1024px) {
       flex-direction: column;
+      align-items: center;
       gap: 2rem;
     }
-  }
-
-  &__imageContainer {
-    flex: 0 0 400px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-
-    @media (max-width: 1024px) {
-      flex: 0 0 auto;
-      width: 100%;
-      max-width: 450px;
-      margin: 0 auto;
-    }
 
     @media (max-width: 768px) {
-      max-width: 350px;
-    }
-
-    @media (max-width: 480px) {
-      max-width: 100%;
+      gap: 1.5rem;
     }
   }
 
-  &__image {
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(79, 195, 247, 0.3);
-    border: 2px solid #4fc3f7;
-    transition: all 0.3s ease;
-    object-fit: cover;
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    &:hover {
-      transform: scale(1.02);
-      box-shadow: 0 10px 30px rgba(79, 195, 247, 0.5);
-    }
+  &__backgroundImage {
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: 0.25;
 
     @media (max-width: 768px) {
-      border-radius: 8px;
+      opacity: 0.22;
     }
 
     @media (max-width: 480px) {
-      border-radius: 6px;
+      opacity: 0.2;
     }
   }
 
   &__list {
-    flex: 1;
     list-style: none;
-    font-size: 1.15rem;
-    line-height: 1.9;
-    color: #5a7a8f;
+    font-size: 1.2rem;
+    line-height: 2;
+    color: #0d2838;
+    font-weight: 700;
     padding: 0;
+    margin: 0;
+    flex: 1;
+    width: 100%;
+    text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.95),
+                 -1px -1px 4px rgba(255, 255, 255, 0.9),
+                 1px 1px 8px rgba(255, 255, 255, 0.8);
+
+    @media (max-width: 1024px) {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     @media (max-width: 768px) {
-      font-size: 1.05rem;
-      line-height: 1.7;
+      font-size: 1.1rem;
+      line-height: 1.8;
     }
 
     @media (max-width: 480px) {
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     @media (max-width: 320px) {
@@ -159,14 +169,17 @@
       padding-left: 1.8rem;
       position: relative;
 
+      @media (max-width: 1024px) {
+        padding-left: 0;
+        text-align: center;
+      }
+
       @media (max-width: 768px) {
         margin-bottom: 1rem;
-        padding-left: 1.5rem;
       }
 
       @media (max-width: 480px) {
         margin-bottom: 0.75rem;
-        padding-left: 1.2rem;
       }
 
       &::before {
@@ -176,6 +189,12 @@
         color: #4fc3f7;
         font-weight: bold;
         font-size: 1.2rem;
+
+        @media (max-width: 1024px) {
+          position: static;
+          display: inline;
+          margin-right: 0.5rem;
+        }
 
         @media (max-width: 480px) {
           font-size: 1rem;
@@ -213,6 +232,123 @@
 
     @media (max-width: 320px) {
       font-size: 0.85rem;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    height: 100%;
+
+    @media (max-width: 1024px) {
+      width: 100%;
+      justify-content: center;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+  }
+
+  &__contactWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__arrowTop {
+    font-size: 3.5rem;
+    color: #4fc3f7;
+    font-weight: bold;
+    animation: bounceDown 1.5s infinite;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  &__arrowBottom {
+    font-size: 3.5rem;
+    color: #4fc3f7;
+    font-weight: bold;
+    animation: bounceUp 1.5s infinite;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  @keyframes bounceDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  @keyframes bounceUp {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  &__contactLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #5fd7b0, #007bff);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(79, 195, 247, 0.4);
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    line-height: 1.4;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(79, 195, 247, 0.6);
+      background: linear-gradient(135deg, #007bff, #5fd7b0);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 3px 10px rgba(79, 195, 247, 0.4);
+    }
+
+    @media (max-width: 1200px) {
+      font-size: 1rem;
+      padding: 0.9rem 1.5rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1024px) {
+      font-size: 1.05rem;
+      padding: 0.9rem 1.8rem;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      padding: 0.875rem 1.75rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.95rem;
+      padding: 0.75rem 1.5rem;
     }
   }
 }
