@@ -5,16 +5,21 @@ import Image from "next/image";
 import { RootState } from "../../store";
 import Link from "next/link";
 import { useSelector } from "react-redux";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import styles from "./header.module.scss";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { token, role } = useSelector((state: RootState) => state.auth);
   const pathname = usePathname();
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handlePatriciaDoubleClick = () => {
+    router.push("/login");
   };
 
   return (
