@@ -31,7 +31,13 @@ export default function Header() {
       </div>
       <div className={styles.header__content}>
         <h1>
-          Patricia Sermande <br />
+          <span
+            onDoubleClick={handlePatriciaDoubleClick}
+            style={{ cursor: 'default', userSelect: 'none' }}
+          >
+            Patricia
+          </span>{" "}
+          Sermande <br />
           Réflexologue et Praticienne en Cohérence Cardiaque
         </h1>
 
@@ -93,15 +99,6 @@ export default function Header() {
                     className={pathname === "/public/contact" ? styles.active : ""}
                   >
                     Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/login"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={pathname === "/login" ? styles.active : ""}
-                  >
-                    Se connecter
                   </Link>
                 </li>
               </>
