@@ -131,14 +131,33 @@ export default function Pricing() {
         />
 
         <PricingCard
-          title="Cancer du Sein"
-          price="Gratuit"
+          title="Personne atteinte d'un cancer du sein"
+          price=""
           duration="4 séances"
-          description="
-           prises en charge par RunOdyssea"
+          description="prises en charge par RunOdyssea"
           free={true}
           icon="🎗️"
         />
+      </div>
+
+      <h3 className={styles.pricing__sectionTitle}>Tarifs Entreprise</h3>
+      <div className={styles.pricing__enterpriseCard}>
+        <div className={styles.pricing__enterpriseIcon}>🏢</div>
+        <h4>Bien-être en entreprise - QVCT</h4>
+        <p className={styles.pricing__enterpriseText}>
+          Vous souhaitez offrir à vos collaborateurs des moments de détente et améliorer la qualité de vie au travail ?
+          Je vous propose des interventions sur mesure adaptées aux besoins de votre entreprise : séances de réflexologie plantaire,
+          animations bien-être...
+        </p>
+        <div className={styles.pricing__enterprisePrice}>
+          <strong>Tarif sur devis personnalisé</strong>
+        </div>
+        <p className={styles.pricing__enterpriseContact}>
+          Contactez-moi pour échanger sur votre projet et recevoir une proposition adaptée à vos besoins.
+        </p>
+        <Link href="/public/contact" className={styles.pricing__enterpriseButton}>
+          Demander un devis
+        </Link>
       </div>
 
       <div className={styles.pricing__events}>

@@ -223,6 +223,35 @@
     }
   }
 
+  &__sportifSubtitleH3 {
+    margin: 25px auto 15px;
+    text-align: center;
+    color: #3d9b86;
+    font-size: 1.5rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Lato", sans-serif;
+    letter-spacing: 0.5px;
+
+    &::after {
+      content: "";
+      width: 50px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(95, 215, 176, 0.5), rgba(0, 123, 255, 0.5));
+      border-radius: 2px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1.3rem;
+      margin: 20px 0 12px;
+    }
+  }
+
   &__list {
     margin: 2rem 0 2rem 1rem;
     padding-left: 1rem;

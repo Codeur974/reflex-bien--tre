@@ -41,19 +41,18 @@ export default function ReflexoPage() {
             <p className={Styles.reflexo__sportifSubtitle}>
               <strong>Sportifs amateurs et de haut niveau,</strong>
             </p>
+            <p className={Styles.reflexo__sportifSubtitle}>
+              <strong>La réflexologie sportive peut devenir un soutien précieux dans votre pratique.</strong>
+            </p>
           </div>
         </div>
-
-        <p className={Styles.reflexo__text}>
-          <strong>La réflexologie sportive peut devenir un soutien précieux dans votre pratique.</strong>
-        </p>
 
         <p className={Styles.reflexo__text}>
           Elle accompagne la préparation, optimise la récupération et contribue à limiter les risques de
           blessures grâce à l&apos;activation naturelle des mécanismes d&apos;équilibre du corps.
         </p>
 
-        <h2 className={Styles.reflexo__textContainer}>Pourquoi intégrer la réflexologie dans votre pratique sportive ?</h2>
+        <h3 className={Styles.reflexo__sportifSubtitleH3}>Pourquoi intégrer la réflexologie dans votre pratique sportive ?</h3>
 
         <p className={Styles.reflexo__text}>
           L&apos;activité physique sollicite intensément l&apos;organisme : tensions musculaires, fatigue nerveuse, stress
@@ -63,7 +62,7 @@ export default function ReflexoPage() {
           et aide le corps à mobiliser ses capacités naturelles de régénération.
         </p>
 
-        <h2 className={Styles.reflexo__textContainer}>Ses bienfaits :</h2>
+        <h3 className={Styles.reflexo__sportifSubtitleH3}>Ses bienfaits :</h3>
         <ul className={Styles.reflexo__list}>
           <li>Amélioration de la récupération (diminution des tensions et courbatures)</li>
           <li>Optimisation du souffle et de la gestion du stress</li>
@@ -72,7 +71,7 @@ export default function ReflexoPage() {
           <li>Accompagnement dans la prévention du surmenage et des blessures</li>
         </ul>
 
-        <h2 className={Styles.reflexo__textContainer}>La réflexologie dans la préparation sportive</h2>
+        <h3 className={Styles.reflexo__sportifSubtitleH3}>La réflexologie dans la préparation sportive</h3>
 
         <p className={Styles.reflexo__text}>
           Chaque zone du pied correspond à une partie du corps.
@@ -92,12 +91,12 @@ export default function ReflexoPage() {
           progression, de compétition ou de récupération.
         </p>
 
-        <h2 className={Styles.reflexo__textContainer}>Le Pack COMPÉT</h2>
+        <h3 className={Styles.reflexo__sportifSubtitleH3}>Le Pack COMPÉT</h3>
         <p className={Styles.reflexo__text}>
           <em>Idéal avant et après une compétition ou un événement sportif intense.</em>
         </p>
 
-        <h2 className={Styles.reflexo__textContainer}>Objectifs :</h2>
+        <h3 className={Styles.reflexo__sportifSubtitleH3}>Objectifs :</h3>
         <ul className={Styles.reflexo__list}>
           <li>Préparer le corps et le mental</li>
           <li>Optimiser les capacités le jour J</li>
