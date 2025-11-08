@@ -48,11 +48,14 @@ export default function Header() {
           <span
             onDoubleClick={handlePatriciaDoubleClick}
             style={{ cursor: 'default', userSelect: 'none' }}
+            className={styles.header__mainTitle}
           >
-            Patricia
-          </span>{" "}
-          Sermande <br />
-          Réflexologue et Praticienne en Cohérence Cardiaque
+            Patricia Sermande
+          </span>
+          <br />
+          <span className={styles.header__subtitle}>
+            Réflexologue plantaire
+          </span>
         </h1>
 
         <button

@@ -44,6 +44,66 @@ export default function Pricing() {
         />
       </div>
 
+      <h3 className={styles.pricing__sectionTitle}>Tarifs de Groupe</h3>
+      <div className={styles.pricing__grid}>
+        <PricingCard
+          title="Séance de groupe - 2 personnes"
+          price="120€"
+          duration="1 heure / pers"
+          description="Partagez un moment de détente à deux"
+          special={true}
+          icon="👥"
+        />
+
+        <PricingCard
+          title="Séance de groupe - 3 personnes"
+          price="165€"
+          duration="1 heure / pers"
+          description="Bien-être en petit groupe"
+          special={true}
+          icon="👥"
+        />
+
+        <PricingCard
+          title="Séance de groupe - 4 personnes"
+          price="200€"
+          duration="1 heure / pers"
+          description="Partagez une expérience collective"
+          special={true}
+          icon="👥"
+        />
+      </div>
+
+      <h3 className={styles.pricing__sectionTitle}>Tarifs Sportifs</h3>
+      <div className={styles.pricing__grid}>
+        <PricingCard
+          title="Pack COMPÉT"
+          price="180€"
+          duration="3 séances"
+          description="Préparation et récupération pour sportifs"
+          special={true}
+          icon="🏆"
+        />
+
+        <PricingCard
+          title="Préparation physique"
+          price="125€"
+          duration="Séances 1 et 2"
+          description="Pour optimiser vos performances"
+          special={true}
+          icon="💪"
+        />
+
+        <PricingCard
+          title="Séance de récupération"
+          price="65€"
+          duration="1 heure / séance"
+          description="Récupération post-effort"
+          special={true}
+          icon="🧘"
+        />
+      </div>
+
       <h3 className={styles.pricing__sectionTitle}>Tarifs Solidaires</h3>
       <div className={styles.pricing__solidaryNote}>
         <p>
