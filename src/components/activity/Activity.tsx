@@ -9,57 +9,41 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store";
 import { fetchWorks } from "@/store/slices/worksSlice";
+import { fetchNews } from "@/store/slices/newsSlice";
 
 function Activity() {
   const dispatch: AppDispatch = useDispatch();
-  const { works, isLoading, error } = useSelector(
+  const { works, isLoading: worksLoading, error: worksError } = useSelector(
     (state: RootState) => state.works
+  );
+  const { news, isLoading: newsLoading, error: newsError } = useSelector(
+    (state: RootState) => state.news
   );
 
   useEffect(() => {
     dispatch(fetchWorks());
+    dispatch(fetchNews());
   }, [dispatch]);
 
-  // Trie les works par date décroissante (plus récent d'abord)
   const sortedWorks = [...works].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  // Récupère le dernier work (le plus récent)
-  const lastWork = sortedWorks.length > 0 ? sortedWorks[0] : null;
+  const sortedNews = [...news].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
-  // Récupère la dernière image du tableau files, sinon la cover, sinon une image par défaut
-  const lastImageRaw =
-    lastWork && lastWork.files && lastWork.files.length > 0
-      ? lastWork.files[lastWork.files.length - 1].url
-      : lastWork?.cover || "";
-
-  const lastImage =
-    lastImageRaw && lastImageRaw.length > 0
-      ? lastImageRaw.startsWith("/") || lastImageRaw.startsWith("http")
-        ? lastImageRaw
-        : "/" + lastImageRaw
-      : "/default.jpg";
-  // Mapping pour LastNews
-  const firstNews = lastWork
-    ? {
-        id: 0,
-        title: lastWork.title,
-        description: lastWork.title,
-        coverImage: lastImage,
-        date: lastWork.date,
-      }
-    : null;
+  const lastNews = sortedNews.length > 0 ? sortedNews[0] : null;
 
   return (
     <div className={styles.container}>
       <div className={styles.activity} id="evenements">
         <div className={styles.activity__actu}>
-          <LastNews news={firstNews} />
+          <LastNews news={lastNews} />
         </div>
         <div className={styles.activity__works}>
-          {isLoading && <p>Chargement...</p>}
-          {error && <p>Erreur: {error}</p>}
+          {worksLoading && <p>Chargement...</p>}
+          {worksError && <p>Erreur: {worksError}</p>}
           {sortedWorks.length > 0 && (
             <>
               <Slider items={sortedWorks} />

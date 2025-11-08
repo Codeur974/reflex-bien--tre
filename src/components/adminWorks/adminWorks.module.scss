@@ -1,0 +1,586 @@
+.adminWorks {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  @media (max-width: 768px) {
+    padding: 30px 15px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+  }
+
+  &__addButton {
+    background: linear-gradient(135deg, #5fd7b0 0%, #4fc3f7 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(95, 215, 176, 0.3);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(95, 215, 176, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px 20px;
+      font-size: 0.95rem;
+    }
+  }
+
+  &__form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 2px solid rgba(95, 215, 176, 0.3);
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(95, 215, 176, 0.1);
+
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      color: #3d9b86;
+      margin: 0 0 25px;
+      font-family: "Lato", sans-serif;
+
+      @media (max-width: 768px) {
+        font-size: 1.3rem;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__field {
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      font-size: 1rem;
+      color: #5a7a8f;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-family: "Lato", sans-serif;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid rgba(95, 215, 176, 0.3);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: "Lato", sans-serif;
+      transition: all 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #5fd7b0;
+        box-shadow: 0 0 0 3px rgba(95, 215, 176, 0.1);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+      line-height: 1.5;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 2px dashed rgba(95, 215, 176, 0.3);
+      border-radius: 8px;
+      font-family: "Lato", sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        border-color: #5fd7b0;
+        background: rgba(95, 215, 176, 0.05);
+      }
+    }
+  }
+
+  &__formActions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+    }
+  }
+
+  &__submitButton {
+    flex: 1;
+    background: linear-gradient(135deg, #5fd7b0 0%, #4fc3f7 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(95, 215, 176, 0.4);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__cancelButton {
+    flex: 1;
+    background: white;
+    color: #5a7a8f;
+    border: 2px solid rgba(90, 122, 143, 0.3);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(90, 122, 143, 0.05);
+      border-color: #5a7a8f;
+    }
+  }
+
+  &__list {
+    h3 {
+      font-size: 1.5rem;
+      color: #3d9b86;
+      margin: 0 0 25px;
+      font-family: "Lato", sans-serif;
+
+      @media (max-width: 768px) {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  &__error {
+    color: #e74c3c;
+    padding: 15px;
+    background: rgba(231, 76, 60, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #e74c3c;
+    margin-bottom: 20px;
+  }
+
+  &__empty {
+    color: #5a7a8f;
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.1rem;
+    font-style: italic;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(95, 215, 176, 0.2);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(95, 215, 176, 0.2);
+      border-color: #5fd7b0;
+    }
+  }
+
+  &__cardModalOpen {
+    &:hover {
+      transform: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      border-color: rgba(95, 215, 176, 0.2);
+    }
+  }
+
+  &__cardImage {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: rgba(95, 215, 176, 0.1);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__cardContent {
+    padding: 20px;
+
+    h4 {
+      font-size: 1.2rem;
+      color: #3d9b86;
+      margin: 0 0 10px;
+      font-family: "Lato", sans-serif;
+      font-weight: 700;
+    }
+  }
+
+  &__cardDescription {
+    font-size: 0.9rem;
+    color: #5a7a8f;
+    margin: 10px 0;
+    font-family: "Lato", sans-serif;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  &__cardDate {
+    font-size: 0.95rem;
+    color: #5a7a8f;
+    margin: 8px 0;
+    font-family: "Lato", sans-serif;
+  }
+
+  &__cardFiles {
+    font-size: 0.9rem;
+    color: #5a7a8f;
+    margin: 8px 0;
+    font-family: "Lato", sans-serif;
+    font-style: italic;
+  }
+
+  &__cardActions {
+    display: flex;
+    gap: 10px;
+    padding: 0 20px 20px;
+
+    button {
+      flex: 1;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: "Lato", sans-serif;
+    }
+  }
+
+  &__editButton {
+    background: linear-gradient(135deg, #5fd7b0 0%, #4fc3f7 100%);
+    color: white;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(95, 215, 176, 0.3);
+    }
+  }
+
+  &__deleteButton {
+    background: white;
+    color: #e74c3c;
+    border: 2px solid rgba(231, 76, 60, 0.3);
+
+    &:hover {
+      background: rgba(231, 76, 60, 0.1);
+      border-color: #e74c3c;
+    }
+  }
+
+  &__manageButton {
+    background: white;
+    color: #3d9b86;
+    border: 2px solid rgba(95, 215, 176, 0.3);
+
+    &:hover {
+      background: rgba(95, 215, 176, 0.1);
+      border-color: #5fd7b0;
+    }
+  }
+}
+
+// Gestionnaire de fichiers
+.filesManager {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    pointer-events: all;
+  }
+
+  &__modal {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    pointer-events: all;
+    z-index: 1;
+  }
+
+  &__header {
+    padding: 20px 30px;
+    border-bottom: 2px solid rgba(95, 215, 176, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h3 {
+      margin: 0;
+      color: #3d9b86;
+      font-size: 1.5rem;
+      font-family: "Lato", sans-serif;
+    }
+  }
+
+  &__closeBtn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #5a7a8f;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: #3d9b86;
+    }
+  }
+
+  &__content {
+    padding: 30px;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__item {
+    border: 2px solid rgba(95, 215, 176, 0.3);
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    position: relative;
+  }
+
+  &__imageWrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: rgba(95, 215, 176, 0.1);
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__info {
+    padding: 15px;
+  }
+
+  &__description {
+    margin: 0 0 10px;
+    color: #5a7a8f;
+    font-size: 0.95rem;
+    font-style: italic;
+    min-height: 40px;
+    line-height: 1.4;
+
+    em {
+      color: #999;
+    }
+  }
+
+  &__editBtn {
+    width: 100%;
+    background: linear-gradient(135deg, #5fd7b0 0%, #4fc3f7 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(95, 215, 176, 0.3);
+    }
+  }
+
+  &__editForm {
+    padding: 15px;
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid rgba(95, 215, 176, 0.3);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: "Lato", sans-serif;
+      resize: vertical;
+      margin-bottom: 10px;
+
+      &:focus {
+        outline: none;
+        border-color: #5fd7b0;
+      }
+    }
+  }
+
+  &__editActions {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__saveBtn {
+    flex: 1;
+    background: linear-gradient(135deg, #5fd7b0 0%, #4fc3f7 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(95, 215, 176, 0.3);
+    }
+  }
+
+  &__cancelBtn {
+    flex: 1;
+    background: white;
+    color: #5a7a8f;
+    border: 2px solid rgba(90, 122, 143, 0.3);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba(90, 122, 143, 0.05);
+      border-color: #5a7a8f;
+    }
+  }
+
+  &__selectWrapper {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 2;
+  }
+
+  &__checkbox {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    accent-color: #5fd7b0;
+  }
+
+  &__actions {
+    padding: 15px 30px;
+    border-bottom: 2px solid rgba(95, 215, 176, 0.3);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__deleteBtn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #c0392b;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+    }
+  }
+}

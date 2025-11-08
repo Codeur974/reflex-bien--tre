@@ -119,6 +119,23 @@
     }
   }
 
+  &__logoutButton {
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #e74c3c;
+    background: none;
+    border: none;
+    transition: all 0.3s ease;
+    padding: 0;
+    font-family: inherit;
+
+    &:hover {
+      text-decoration: underline;
+      color: #c0392b;
+    }
+  }
+
   // Entre 1024px et 1200px - réduire espacement et taille police
   @media (max-width: 1200px) and (min-width: 1025px) {
     &__nav {
@@ -284,6 +301,14 @@
             padding: 15px 10px;
             font-size: 18px;
             width: 100%;
+          }
+
+          button {
+            display: block;
+            padding: 15px 10px;
+            font-size: 18px;
+            width: 100%;
+            text-align: left;
           }
 
           &:last-child {

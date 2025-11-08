@@ -1,0 +1,65 @@
+.adminPage {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  @media (max-width: 768px) {
+    padding: 30px 15px;
+  }
+}
+
+.section {
+  margin-bottom: 20px;
+  border: 2px solid rgba(95, 215, 176, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(95, 215, 176, 0.2);
+    border-color: #5fd7b0;
+  }
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  color: #3d9b86;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 25px 30px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, rgba(95, 215, 176, 0.05), white);
+  transition: all 0.3s ease;
+  user-select: none;
+
+  &:hover {
+    background: rgba(95, 215, 176, 0.1);
+  }
+
+  &:active {
+    background: rgba(95, 215, 176, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+    padding: 20px 20px;
+  }
+}
+
+.sectionContent {
+  padding: 0;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

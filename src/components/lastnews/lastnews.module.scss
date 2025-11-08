@@ -3,78 +3,63 @@
 
   &__content {
     position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 8px 25px rgba(95, 215, 176, 0.3);
+      transform: translateY(-5px);
+
+      .lastNews__title {
+        background: linear-gradient(135deg, #5fd7b0 0%, #4fc3f7 100%);
+        transform: translateX(-50%) scale(1.05);
+      }
+
+      .lastNews__image {
+        transform: scale(1.05);
+      }
+    }
 
     .lastNews__title {
       position: absolute;
-      bottom: 10px;
-      left: 10px;
-      font-size: 1.5rem;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.1rem;
       color: white;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 5px 10px;
-      border-radius: 5px;
+      background: rgba(61, 155, 134, 0.95);
+      padding: 14px 28px;
+      border-radius: 50px;
       z-index: 2;
+      font-family: "Lato", sans-serif;
+      font-weight: 600;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      margin: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 80%;
+
+      @media (max-width: 768px) {
+        font-size: 0.95rem;
+        padding: 12px 22px;
+        max-width: 90%;
+        bottom: 30px;
+      }
     }
 
     .lastNews__image {
       width: 100%;
       height: 300px;
-      border-radius: 10px;
       object-fit: cover;
       cursor: pointer;
-    }
-  }
-
-  .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-
-    &__content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 800px;
-      max-height: 80%;
-      overflow-y: auto;
-      text-align: center;
-      position: relative;
-
-      img {
-        width: 100%;
-        height: 500px;
-        max-width: 100%;
-
-        border-radius: 10px;
-        margin-bottom: 15px;
-        object-fit: cover;
-      }
-
-      h3 {
-        margin-bottom: 10px;
-      }
-
-      p {
-        margin-bottom: 10px;
-      }
-
-      .modal__close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
+      display: block;
+      transition: transform 0.3s ease;
+      border-radius: 12px;
     }
   }
 }

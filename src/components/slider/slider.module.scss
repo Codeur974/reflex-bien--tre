@@ -1,8 +1,34 @@
 .slider {
   position: relative;
   width: 100%;
-  height: 300px; /* Ajustez la hauteur pour inclure le titre */
+  height: 300px;
   overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 25px rgba(95, 215, 176, 0.3);
+    transform: translateY(-5px);
+
+    .slider__title {
+      background: linear-gradient(135deg, #5fd7b0 0%, #4fc3f7 100%);
+      transform: translateX(-50%) scale(1.05);
+    }
+
+    .slider__image {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.slider__container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .slider__item {
@@ -10,7 +36,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* Assurez-vous que la hauteur est définie */
+  height: 100%;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
 
@@ -23,24 +49,37 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 15px;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
 .slider__title {
-  margin-top: 10px;
-  font-size: 1.5rem;
+  margin: 0;
+  font-size: 1.1rem;
   text-align: center;
   position: absolute;
-  bottom: 10px; /* Positionnez le titre en bas */
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  color: white; /* Assurez-vous que le texte est visible */
-  background: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Ajoutez un fond pour améliorer la lisibilité */
-  padding: 5px 10px;
-  border-radius: 5px;
+  color: white;
+  background: rgba(61, 155, 134, 0.95);
+  padding: 14px 28px;
+  border-radius: 50px;
+  z-index: 10;
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80%;
+
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    padding: 12px 22px;
+    max-width: 90%;
+    bottom: 30px;
+  }
 }

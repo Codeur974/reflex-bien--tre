@@ -1,18 +1,26 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { RootState } from "../../store";
+import { RootState, AppDispatch } from "../../store";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { usePathname, useRouter } from "next/navigation";
+import { logout } from "../../store/slices/authSlice";
 import styles from "./header.module.scss";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { token, role } = useSelector((state: RootState) => state.auth);
+  const [isMounted, setIsMounted] = useState(false);
+  const { token, role, isHydrated } = useSelector((state: RootState) => state.auth);
   const pathname = usePathname();
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
+
+  // S'assurer que le composant est monté côté client
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,6 +28,12 @@ export default function Header() {
 
   const handlePatriciaDoubleClick = () => {
     router.push("/login");
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    setIsMenuOpen(false);
+    router.push("/");
   };
 
   return (
@@ -53,6 +67,9 @@ export default function Header() {
 
         <nav className={`${styles.header__nav} ${isMenuOpen ? styles.header__nav_open : ""}`}>
           <ul>
+            {/* Attendre que le composant soit monté côté client */}
+            {!isMounted ? null : (
+              <>
             {/* Liens publics */}
             {!token && (
               <>
@@ -154,7 +171,17 @@ export default function Header() {
                     </Link>
                   </li>
                 )}
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className={styles.header__logoutButton}
+                  >
+                    Déconnexion
+                  </button>
+                </li>
               </>
+            )}
+            </>
             )}
           </ul>
         </nav>

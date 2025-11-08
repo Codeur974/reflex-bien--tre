@@ -1,70 +1,43 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import { News } from "@/types/types";
 import styles from "./lastnews.module.scss";
-import Image from "next/image";
-
-interface NewsItem {
-  id: number;
-  title: string;
-  description: string;
-  coverImage: string;
-  date: string;
-}
+import { useRouter } from "next/navigation";
 
 interface LastNewsProps {
-  news: NewsItem | null;
+  news: News | null;
 }
 
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
+
 function LastNews({ news }: LastNewsProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   if (!news) {
     return <p>Aucune actualité disponible.</p>;
   }
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+  const coverImageUrl = news.cover.startsWith("http")
+    ? news.cover
+    : `${API_URL}${news.cover.startsWith("/") ? news.cover : "/" + news.cover}`;
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleClick = () => {
+    router.push(`/public/news/${news._id}`);
   };
 
   return (
     <div className={styles.lastNews}>
       <div className={styles.lastNews__content}>
         <h3 className={styles.lastNews__title}>{news.title}</h3>
-        <Image
-          width={300}
-          height={200}
-          src={news.coverImage}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={coverImageUrl}
           alt={news.title}
           className={styles.lastNews__image}
-          onClick={handleOpenModal}
+          onClick={handleClick}
         />
       </div>
-
-      {isModalOpen && (
-        <div className={styles.modal}>
-          <div className={styles.modal__content}>
-            <button className={styles.modal__close} onClick={handleCloseModal}>
-              &times;
-            </button>
-            <h3>{news.title}</h3>
-            <Image
-              src={news.coverImage}
-              alt={news.title}
-              width={300}
-              height={200}
-            />
-            <p>
-              <strong>Date :</strong> {news.date}
-            </p>
-            <p>{news.description}</p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
