@@ -36,6 +36,13 @@ export default function ReflexoPage() {
         </p>
 
         <div className={Styles.reflexo__sportifHeader}>
+          <Image
+            src="/images/sportifs/Image1-velo.jpg"
+            alt="Cycliste"
+            width={200}
+            height={200}
+            className={Styles.reflexo__sportifImage}
+          />
           <div className={Styles.reflexo__sportifTitle}>
             <h2>Réflexologie du sportif</h2>
             <p className={Styles.reflexo__sportifSubtitle}>
@@ -45,6 +52,13 @@ export default function ReflexoPage() {
               <strong>La réflexologie sportive peut devenir un soutien précieux dans votre pratique.</strong>
             </p>
           </div>
+          <Image
+            src="/images/sportifs/Image-sport2.jpg"
+            alt="Sport"
+            width={200}
+            height={200}
+            className={Styles.reflexo__sportifImage}
+          />
         </div>
 
         <p className={Styles.reflexo__text}>
@@ -63,13 +77,22 @@ export default function ReflexoPage() {
         </p>
 
         <h3 className={Styles.reflexo__sportifSubtitleH3}>Ses bienfaits :</h3>
-        <ul className={Styles.reflexo__list}>
-          <li>Amélioration de la récupération (diminution des tensions et courbatures)</li>
-          <li>Optimisation du souffle et de la gestion du stress</li>
-          <li>Soutien à la concentration et à la préparation mentale</li>
-          <li>Préservation de la souplesse et de la mobilité</li>
-          <li>Accompagnement dans la prévention du surmenage et des blessures</li>
-        </ul>
+        <div className={Styles.reflexo__sportifContent}>
+          <ul className={Styles.reflexo__list}>
+            <li>Amélioration de la récupération (diminution des tensions et courbatures)</li>
+            <li>Optimisation du souffle et de la gestion du stress</li>
+            <li>Soutien à la concentration et à la préparation mentale</li>
+            <li>Préservation de la souplesse et de la mobilité</li>
+            <li>Accompagnement dans la prévention du surmenage et des blessures</li>
+          </ul>
+          <Image
+            src="/images/sportifs/Image4-danse.jpg"
+            alt="Danse"
+            width={220}
+            height={220}
+            className={Styles.reflexo__sportifImgSmall}
+          />
+        </div>
 
         <h3 className={Styles.reflexo__sportifSubtitleH3}>La réflexologie dans la préparation sportive</h3>
 
@@ -79,12 +102,21 @@ export default function ReflexoPage() {
           En travaillant sur les zones réflexes, la réflexologie favorise :
         </p>
 
-        <ul className={Styles.reflexo__list}>
-          <li>un meilleur équilibre nerveux,</li>
-          <li>une respiration plus fluide,</li>
-          <li>une meilleure circulation,</li>
-          <li>une récupération musculaire plus rapide.</li>
-        </ul>
+        <div className={Styles.reflexo__sportifContent}>
+          <ul className={Styles.reflexo__list}>
+            <li>un meilleur équilibre nerveux,</li>
+            <li>une respiration plus fluide,</li>
+            <li>une meilleure circulation,</li>
+            <li>une récupération musculaire plus rapide.</li>
+          </ul>
+          <Image
+            src="/images/sportifs/Image3-sport.jpg"
+            alt="Sport"
+            width={300}
+            height={300}
+            className={Styles.reflexo__sportifImgRight}
+          />
+        </div>
 
         <p className={Styles.reflexo__text}>
           Elle s&apos;intègre ainsi naturellement dans un programme d&apos;entraînement, que ce soit en période de
@@ -97,11 +129,20 @@ export default function ReflexoPage() {
         </p>
 
         <h3 className={Styles.reflexo__sportifSubtitleH3}>Objectifs :</h3>
-        <ul className={Styles.reflexo__list}>
-          <li>Préparer le corps et le mental</li>
-          <li>Optimiser les capacités le jour J</li>
-          <li>Favoriser une récupération rapide et complète</li>
-        </ul>
+        <div className={Styles.reflexo__sportifContent}>
+          <ul className={Styles.reflexo__list}>
+            <li>Préparer le corps et le mental</li>
+            <li>Optimiser les capacités le jour J</li>
+            <li>Favoriser une récupération rapide et complète</li>
+          </ul>
+          <Image
+            src="/images/sportifs/Image5-hand.png"
+            alt="Handball"
+            width={220}
+            height={220}
+            className={Styles.reflexo__sportifImgSmall}
+          />
+        </div>
 
         <div className={Styles.reflexo__timelineContainer}>
           <div className={Styles.reflexo__timeline}>

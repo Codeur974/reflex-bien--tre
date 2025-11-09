@@ -165,11 +165,65 @@
   &__sportifImage {
     width: auto;
     height: auto;
-    max-width: 150px;
+    max-width: 200px;
     object-fit: contain;
+    border-radius: 12px;
+    background: transparent;
+    mix-blend-mode: multiply;
+
+    @media (max-width: 1024px) {
+      background: transparent;
+    }
 
     @media (max-width: 768px) {
-      max-width: 120px;
+      max-width: 150px;
+      background: transparent;
+    }
+  }
+
+  &__sportifContent {
+    display: flex;
+    align-items: flex-start;
+    gap: 5rem;
+    margin: 0 0 -1.5rem 0;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      margin: 0;
+    }
+  }
+
+  &__sportifImgRight {
+    flex-shrink: 0;
+    max-width: 300px;
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    background: transparent;
+    mix-blend-mode: multiply;
+    margin-top: 1rem;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto 2rem;
+    }
+  }
+
+  &__sportifImgSmall {
+    flex-shrink: 0;
+    max-width: 220px;
+    width: 220px;
+    height: auto;
+    border-radius: 12px;
+    background: transparent;
+    mix-blend-mode: multiply;
+    margin-top: 1rem;
+
+    @media (max-width: 768px) {
+      max-width: 100%;
+      width: 100%;
+      margin: 0 auto 2rem;
     }
   }
 
