@@ -53,7 +53,7 @@ function Activity() {
               <div className={styles.activity__noEvent}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/images/matériel_de_réflexologie.jpg"
+                  src="/images/materiel_de_reflexologie.jpg"
                   alt="Matériel de réflexologie"
                   className={styles.activity__noEventImage}
                 />

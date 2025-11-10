@@ -18,7 +18,7 @@ function OeuvreEntreprise() {
       <div className={styles.oeuvreEntreprise__wrapper}>
         <div className={styles.oeuvreEntreprise__background}>
           <Image
-            src="/images/matériel_de_réflexologie.jpg"
+            src="/images/materiel_de_reflexologie.jpg"
             alt="Matériel de réflexologie plantaire"
             fill
             className={styles.oeuvreEntreprise__backgroundImage}

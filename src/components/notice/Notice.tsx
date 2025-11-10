@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store";
 import { fetchReviews } from "@/store/slices/reviewsSlice";
@@ -12,25 +12,56 @@ function Notice() {
     (state: RootState) => state.reviews
   );
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [cardsPerView, setCardsPerView] = useState(1);
 
   useEffect(() => {
     dispatch(fetchReviews());
   }, [dispatch]);
 
+  useEffect(() => {
+    const updateCardsPerView = () => {
+      if (typeof window === "undefined") return;
+      setCardsPerView(window.innerWidth >= 768 ? 2 : 1);
+    };
+
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView);
+    return () => window.removeEventListener("resize", updateCardsPerView);
+  }, []);
+
+  const canNavigate = reviews.length > cardsPerView;
+
   const handleNext = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
-  }, [reviews.length]);
+    if (reviews.length === 0) return;
+    setCurrentIndex(
+      (prevIndex) => (prevIndex + cardsPerView) % reviews.length
+    );
+  }, [reviews.length, cardsPerView]);
 
   const handlePrev = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + reviews.length) % reviews.length);
-  }, [reviews.length]);
+    if (reviews.length === 0) return;
+    setCurrentIndex(
+      (prevIndex) =>
+        (prevIndex - cardsPerView + reviews.length) % reviews.length
+    );
+  }, [reviews.length, cardsPerView]);
 
   useEffect(() => {
-    if (reviews.length > 0) {
+    if (reviews.length > cardsPerView) {
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [reviews.length, handleNext]);
+    return undefined;
+  }, [reviews.length, cardsPerView, handleNext]);
+
+  const visibleReviews = useMemo(() => {
+    if (reviews.length === 0) return [];
+    const count = Math.min(cardsPerView, reviews.length);
+    return Array.from({ length: count }, (_, idx) => {
+      const reviewIndex = (currentIndex + idx) % reviews.length;
+      return reviews[reviewIndex];
+    });
+  }, [reviews, currentIndex, cardsPerView]);
 
   const renderStars = (rating: number) => {
     return "★".repeat(rating) + "☆".repeat(5 - rating);
@@ -40,14 +71,24 @@ function Notice() {
     <div className={styles.notice}>
       <h2>Avis de mes clients</h2>
       <div className={styles.notice__resalibBadge}>
-        <span>⭐ Avis certifiés Resalib</span>
+        <span>✅ Avis certifiés Resalib</span>
       </div>
 
-      {isLoading && <p style={{ textAlign: "center", color: "#5a7a8f" }}>Chargement des avis...</p>}
-      {error && <p style={{ textAlign: "center", color: "#e74c3c" }}>Erreur: {error}</p>}
+      {isLoading && (
+        <p style={{ textAlign: "center", color: "#5a7a8f" }}>
+          Chargement des avis...
+        </p>
+      )}
+      {error && (
+        <p style={{ textAlign: "center", color: "#e74c3c" }}>
+          Erreur: {error}
+        </p>
+      )}
 
       {!isLoading && !error && reviews.length === 0 && (
-        <p style={{ textAlign: "center", color: "#5a7a8f" }}>Aucun avis pour le moment</p>
+        <p style={{ textAlign: "center", color: "#5a7a8f" }}>
+          Aucun avis pour le moment
+        </p>
       )}
 
       {!isLoading && reviews.length > 0 && (
@@ -56,16 +97,14 @@ function Notice() {
             className={styles.notice__carouselButton}
             onClick={handlePrev}
             aria-label="Avis précédent"
+            disabled={!canNavigate}
           >
-            ‹
+            {"<"}
           </button>
 
           <div className={styles.notice__carouselTrack}>
-            {reviews.map((review, index) => (
-              <div
-                key={review._id}
-                className={`${styles.notice__card} ${index === currentIndex ? styles.active : ''}`}
-              >
+            {visibleReviews.map((review) => (
+              <div key={review._id} className={styles.notice__card}>
                 <div className={styles.notice__cardHeader}>
                   <div className={styles.notice__cardAuthor}>{review.author}</div>
                   <div className={styles.notice__cardDate}>{review.date}</div>
@@ -82,8 +121,9 @@ function Notice() {
             className={styles.notice__carouselButton}
             onClick={handleNext}
             aria-label="Avis suivant"
+            disabled={!canNavigate}
           >
-            ›
+            {">"}
           </button>
         </div>
       )}
@@ -102,3 +142,4 @@ function Notice() {
 }
 
 export default Notice;
+
