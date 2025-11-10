@@ -145,18 +145,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.3s ease;
-    }
+  &__imageFigure {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
 
-    &:hover img {
-      transform: scale(1.05);
-    }
+  &__imageMedia {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  &__image:hover &__imageMedia {
+    transform: scale(1.05);
   }
 
   &__content {
@@ -277,7 +283,6 @@
   align-items: center;
   justify-content: center;
 
-  img,
   video {
     width: 100%;
     height: 100%;
@@ -286,9 +291,27 @@
     transition: transform 0.3s ease;
   }
 
-  &:hover img {
-    transform: scale(1.05);
+  &:hover video {
+    transform: scale(1.02);
   }
+}
+
+.mediaWrapperImage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mediaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.mediaWrapper:hover .mediaImage {
+  transform: scale(1.05);
 }
 
 .mediaDescription {

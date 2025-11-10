@@ -54,6 +54,12 @@
   transition: transform 0.3s ease;
 }
 
+.slider__figure {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .slider__title {
   margin: 0;
   font-size: 1.1rem;

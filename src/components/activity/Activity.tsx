@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 import styles from "./activity.module.scss";
 import Slider from "../slider/Slider";
 import Notice from "../notice/Notice";
@@ -51,11 +52,13 @@ function Activity() {
               <Slider items={futureNews} />
             ) : (
               <div className={styles.activity__noEvent}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src="/images/materiel_de_reflexologie.jpg"
                   alt="Matériel de réflexologie"
+                  width={640}
+                  height={360}
                   className={styles.activity__noEventImage}
+                  sizes="(max-width: 768px) 100vw, 640px"
                 />
                 <p className={styles.activity__noEventText}>
                   Pas d&apos;événement prévu pour le moment

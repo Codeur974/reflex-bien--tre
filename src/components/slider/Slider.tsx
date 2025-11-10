@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import styles from "./slider.module.scss";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
+import { isVideoAsset, resolveMediaUrl } from "@/utils/media";
 
 interface SliderProps {
   items: {
@@ -13,42 +15,52 @@ interface SliderProps {
   }[];
 }
 
-const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
+const SLIDER_IMAGE_SIZES =
+  "(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw";
 
 function Slider({ items }: SliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const router = useRouter();
+  const hasMultipleItems = items.length > 1;
 
   const handleNext = useCallback(() => {
+    if (!hasMultipleItems) return;
     setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
-  }, [items.length]);
+  }, [items.length, hasMultipleItems]);
 
   const handleClick = () => {
     router.push("/public/works");
   };
 
   useEffect(() => {
+    if (currentIndex >= items.length) {
+      setCurrentIndex(0);
+    }
+  }, [currentIndex, items.length]);
+
+  useEffect(() => {
+    if (!hasMultipleItems) return undefined;
     const interval = setInterval(() => {
       handleNext();
-    }, 3000);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [handleNext]);
+  }, [handleNext, hasMultipleItems]);
+
+  const sliderItems = useMemo(
+    () =>
+      items.map((item) => ({
+        ...item,
+        mediaUrl: resolveMediaUrl(item.cover),
+        isVideo: isVideoAsset(item.cover),
+      })),
+    [items]
+  );
 
   return (
     <div className={styles.slider}>
       <div className={styles.slider__container} onClick={handleClick}>
-        {items.map((item, index) => {
-          const imageUrl =
-            item.cover &&
-            (item.cover.startsWith("http") || item.cover.startsWith("//"))
-              ? item.cover
-              : `${backendUrl}${
-                  item.cover.startsWith("/") ? item.cover : "/" + item.cover
-                }`;
-
-          const isVideo = item.cover.match(/\.(mp4|webm|ogg|mov)$/i);
-
+        {sliderItems.map((item, index) => {
           return (
             <div
               key={item._id}
@@ -57,22 +69,27 @@ function Slider({ items }: SliderProps) {
               }`}
             >
               {item.cover ? (
-                isVideo ? (
+                item.isVideo ? (
                   <video
-                    src={imageUrl}
+                    src={item.mediaUrl}
                     className={styles.slider__image}
                     autoPlay
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                   />
                 ) : (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={imageUrl}
-                    alt={item.title}
-                    className={styles.slider__image}
-                  />
+                  <div className={styles.slider__figure}>
+                    <Image
+                      src={item.mediaUrl}
+                      alt={item.title}
+                      fill
+                      sizes={SLIDER_IMAGE_SIZES}
+                      className={styles.slider__image}
+                      priority={index === 0}
+                    />
+                  </div>
                 )
               ) : (
                 <div className={styles.slider__imagePlaceholder}>
