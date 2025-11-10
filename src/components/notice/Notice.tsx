@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "@/store";
 import { fetchReviews } from "@/store/slices/reviewsSlice";
@@ -11,10 +11,26 @@ function Notice() {
   const { reviews, isLoading, error } = useSelector(
     (state: RootState) => state.reviews
   );
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     dispatch(fetchReviews());
   }, [dispatch]);
+
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % reviews.length);
+  }, [reviews.length]);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + reviews.length) % reviews.length);
+  }, [reviews.length]);
+
+  useEffect(() => {
+    if (reviews.length > 0) {
+      const interval = setInterval(handleNext, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [reviews.length, handleNext]);
 
   const renderStars = (rating: number) => {
     return "★".repeat(rating) + "☆".repeat(5 - rating);
@@ -35,19 +51,40 @@ function Notice() {
       )}
 
       {!isLoading && reviews.length > 0 && (
-        <div className={styles.notice__grid}>
-          {reviews.map((review) => (
-            <div key={review._id} className={styles.notice__card}>
-              <div className={styles.notice__cardHeader}>
-                <div className={styles.notice__cardAuthor}>{review.author}</div>
-                <div className={styles.notice__cardDate}>{review.date}</div>
+        <div className={styles.notice__carousel}>
+          <button
+            className={styles.notice__carouselButton}
+            onClick={handlePrev}
+            aria-label="Avis précédent"
+          >
+            ‹
+          </button>
+
+          <div className={styles.notice__carouselTrack}>
+            {reviews.map((review, index) => (
+              <div
+                key={review._id}
+                className={`${styles.notice__card} ${index === currentIndex ? styles.active : ''}`}
+              >
+                <div className={styles.notice__cardHeader}>
+                  <div className={styles.notice__cardAuthor}>{review.author}</div>
+                  <div className={styles.notice__cardDate}>{review.date}</div>
+                </div>
+                <div className={styles.notice__cardRating}>
+                  {renderStars(review.rating)}
+                </div>
+                <p className={styles.notice__cardText}>{review.text}</p>
               </div>
-              <div className={styles.notice__cardRating}>
-                {renderStars(review.rating)}
-              </div>
-              <p className={styles.notice__cardText}>{review.text}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <button
+            className={styles.notice__carouselButton}
+            onClick={handleNext}
+            aria-label="Avis suivant"
+          >
+            ›
+          </button>
         </div>
       )}
 
