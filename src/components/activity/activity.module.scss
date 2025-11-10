@@ -136,16 +136,18 @@
 
     &__newsWrapper {
       margin-top: -6rem;
+      width: 100%;
     }
 
     &__worksWrapper {
       margin-top: 0;
+      width: 100%;
     }
 
     &__works,
     &__actu {
-      width: 90%;
-      max-width: 350px;
+      width: 100%;
+      max-width: 100%;
       padding: 15px;
       min-height: 220px;
     }
@@ -159,16 +161,18 @@
 
     &__newsWrapper {
       margin-top: -5rem;
+      width: 100%;
     }
 
     &__worksWrapper {
       margin-top: 0;
+      width: 100%;
     }
 
     &__works,
     &__actu {
-      width: 95%;
-      max-width: 300px;
+      width: 100%;
+      max-width: 100%;
       padding: 10px;
       min-height: 200px;
       border-radius: 15px;
@@ -287,6 +291,11 @@
   @media (max-width: 1024px) {
     font-size: 1.8rem;
     margin-bottom: 1.8rem;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.6rem;
   }
 
   @media (max-width: 768px) {
