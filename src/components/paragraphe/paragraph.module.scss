@@ -207,6 +207,10 @@
       float: none;
       display: block;
       margin: 0 auto 1.5rem;
+      width: 100% !important;
+      height: 280px !important;
+      object-fit: cover !important;
+      object-position: center 70% !important;
     }
   }
 }
