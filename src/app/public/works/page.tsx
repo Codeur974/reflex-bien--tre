@@ -46,6 +46,8 @@ export default function WorksPage() {
                   item.cover.startsWith("/") ? item.cover : "/" + item.cover
                 }`;
 
+          const isVideo = item.cover?.match(/\.(mp4|webm|ogg|mov)$/i);
+
           return (
             <div
               key={item._id}
@@ -54,11 +56,21 @@ export default function WorksPage() {
             >
               <div className={styles.workCard__image}>
                 {item.cover ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={imageUrl}
-                    alt={item.title}
-                  />
+                  isVideo ? (
+                    <video
+                      src={imageUrl}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={imageUrl}
+                      alt={item.title}
+                    />
+                  )
                 ) : (
                   <div>Image non disponible</div>
                 )}
