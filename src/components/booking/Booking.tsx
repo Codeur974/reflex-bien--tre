@@ -7,7 +7,7 @@ function Booking() {
       <div className={styles.booking}>
         <h2 className={styles.booking__title}>Réserver votre séance</h2>
         <p className={styles.booking__subtitle}>
-          Prenez rendez-vous en ligne directement via notre plateforme de
+          Prenez rendez-vous en ligne directement via ma plateforme de
           réservation sécurisée
         </p>
 
@@ -46,7 +46,7 @@ function Booking() {
               rel="noopener noreferrer"
               className={styles.booking__contactLink}
             >
-              Suivez-nous
+              Suivez-moi
             </a>
           </div>
 
@@ -59,7 +59,7 @@ function Booking() {
               rel="noopener noreferrer"
               className={styles.booking__contactLink}
             >
-              Écrivez-nous
+              Écrivez-moi
             </a>
           </div>
         </div>

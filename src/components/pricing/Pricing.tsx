@@ -12,7 +12,7 @@ export default function Pricing() {
       <div className={styles.pricing__info}>
         <div className={styles.pricing__infoItem}>
           <span className={styles.pricing__infoIcon}>⏱️</span>
-          <p>Séances de 1 heure</p>
+          <p>Séances de 1h00 à 1h15</p>
         </div>
         <div className={styles.pricing__infoItem}>
           <span className={styles.pricing__infoIcon}>💵</span>
@@ -20,7 +20,7 @@ export default function Pricing() {
         </div>
         <div className={styles.pricing__infoItem}>
           <span className={styles.pricing__infoIcon}>📍</span>
-          <p>À domicile ou local de l'association</p>
+          <p>À domicile ou en extérieur</p>
         </div>
       </div>
 
@@ -107,8 +107,8 @@ export default function Pricing() {
       <h3 className={styles.pricing__sectionTitle}>Tarifs Solidaires</h3>
       <div className={styles.pricing__solidaryNote}>
         <p>
-          💚 Parce que le bien-être doit être accessible à tous, nous proposons
-          des tarifs adaptés pour certaines situations.
+          💚 Parce que le bien-être doit être accessible à tous, je propose des
+          tarifs adaptés pour certaines situations.
         </p>
       </div>
       <div className={styles.pricing__grid}>
@@ -140,29 +140,52 @@ export default function Pricing() {
         />
       </div>
 
+      <h3 className={styles.pricing__sectionTitle}>Offres de Parrainage</h3>
+      <div className={styles.pricing__referralSection}>
+        <div className={styles.pricing__referralCard}>
+          <div className={styles.pricing__referralIcon}>🎁</div>
+          <h4>Parrainez vos proches et profitez d&apos;avantages exclusifs !</h4>
+          <ul className={styles.pricing__referralList}>
+            <li>
+              <strong>-50% sur votre prochaine séance</strong> pour le parrainage d&apos;un nouveau client
+              <span className={styles.pricing__referralValidity}>(valable 3 mois)</span>
+            </li>
+            <li>
+              <strong>Une séance gratuite</strong> pour le parrainage de 2 nouveaux clients
+              <span className={styles.pricing__referralValidity}>(valable 3 mois)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <h3 className={styles.pricing__sectionTitle}>Tarifs Entreprise</h3>
       <div className={styles.pricing__enterpriseCard}>
         <div className={styles.pricing__enterpriseIcon}>🏢</div>
         <h4>Bien-être en entreprise - QVCT</h4>
         <p className={styles.pricing__enterpriseText}>
-          Vous souhaitez offrir à vos collaborateurs des moments de détente et améliorer la qualité de vie au travail ?
-          Je vous propose des interventions sur mesure adaptées aux besoins de votre entreprise : séances de réflexologie plantaire,
-          animations bien-être...
+          Vous souhaitez offrir à vos collaborateurs des moments de détente et
+          améliorer la qualité de vie au travail ? Je vous propose des
+          interventions sur mesure adaptées aux besoins de votre entreprise :
+          séances de réflexologie plantaire, animations bien-être...
         </p>
         <div className={styles.pricing__enterprisePrice}>
           <strong>Tarif sur devis personnalisé</strong>
         </div>
         <p className={styles.pricing__enterpriseContact}>
-          Contactez-moi pour échanger sur votre projet et recevoir une proposition adaptée à vos besoins.
+          Contactez-moi pour échanger sur votre projet et recevoir une
+          proposition adaptée à vos besoins.
         </p>
-        <Link href="/public/contact" className={styles.pricing__enterpriseButton}>
+        <Link
+          href="/public/contact"
+          className={styles.pricing__enterpriseButton}
+        >
           Demander un devis
         </Link>
       </div>
 
       <div className={styles.pricing__events}>
         <p>
-          N'hésitez pas à consulter la page des{" "}
+          N&apos;hésitez pas à consulter la page des{" "}
           <Link href="/#evenements" className={styles.pricing__eventsLink}>
             futurs événements liés au bien-être
           </Link>

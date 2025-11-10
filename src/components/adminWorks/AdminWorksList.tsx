@@ -22,7 +22,7 @@ function AdminWorksList({ onEdit }: AdminWorksListProps) {
   const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
 
   const handleDelete = async (workId: string) => {
-    if (!confirm("Êtes-vous sûr de vouloir supprimer ce travail ?")) return;
+    if (!confirm("Êtes-vous sûr de vouloir supprimer cette photo ?")) return;
 
     try {
       const response = await fetch(`${API_URL}/api/v1/works/${workId}`, {
@@ -33,7 +33,7 @@ function AdminWorksList({ onEdit }: AdminWorksListProps) {
       });
 
       if (response.ok) {
-        alert("Travail supprimé avec succès !");
+        alert("Photo supprimée avec succès !");
         dispatch(fetchWorks());
       } else {
         alert("Erreur lors de la suppression");
@@ -46,12 +46,12 @@ function AdminWorksList({ onEdit }: AdminWorksListProps) {
 
   return (
     <div className={styles.adminWorks__list}>
-      <h3>Liste des travaux ({works.length})</h3>
+      <h3>Liste des photos ({works.length})</h3>
       {isLoading && <p>Chargement...</p>}
       {error && <p className={styles.adminWorks__error}>Erreur: {error}</p>}
 
       {works.length === 0 && !isLoading && (
-        <p className={styles.adminWorks__empty}>Aucun travail pour le moment</p>
+        <p className={styles.adminWorks__empty}>Aucune photo pour le moment</p>
       )}
 
       <div className={styles.adminWorks__grid}>

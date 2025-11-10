@@ -1,53 +1,65 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "@/store";
+import { fetchReviews } from "@/store/slices/reviewsSlice";
 import styles from "./notice.module.scss";
 
-interface Review {
-  author: string;
-  rating: number;
-  text: string;
-}
-
 function Notice() {
-  const [reviews, setReviews] = useState<Review[]>([]);
-  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch<AppDispatch>();
+  const { reviews, isLoading, error } = useSelector(
+    (state: RootState) => state.reviews
+  );
 
   useEffect(() => {
-    // Simulez une requête API
-    setTimeout(() => {
-      setReviews([
-        {
-          author: "Jean Dupont",
-          rating: 5,
-          text: "Un service exceptionnel, je recommande vivement !",
-        },
-        {
-          author: "Marie Curie",
-          rating: 4,
-          text: "Très bonne expérience, merci beaucoup !",
-        },
-      ]);
-      setLoading(false);
-    }, 1000);
-  }, []);
+    dispatch(fetchReviews());
+  }, [dispatch]);
+
+  const renderStars = (rating: number) => {
+    return "★".repeat(rating) + "☆".repeat(5 - rating);
+  };
 
   return (
     <div className={styles.notice}>
-      <h2>Avis de nos clients</h2>
-      {loading ? (
-        <p>Chargement des avis...</p>
-      ) : (
-        <ul className={styles.notice__list}>
-          {reviews.map((review, index) => (
-            <li key={index} className={styles.notice__item}>
-              <h3>{review.author}</h3>
-              <p>Note : {review.rating} / 5</p>
-              <p>{review.text}</p>
-            </li>
-          ))}
-        </ul>
+      <h2>Avis de mes clients</h2>
+      <div className={styles.notice__resalibBadge}>
+        <span>⭐ Avis certifiés Resalib</span>
+      </div>
+
+      {isLoading && <p style={{ textAlign: "center", color: "#5a7a8f" }}>Chargement des avis...</p>}
+      {error && <p style={{ textAlign: "center", color: "#e74c3c" }}>Erreur: {error}</p>}
+
+      {!isLoading && !error && reviews.length === 0 && (
+        <p style={{ textAlign: "center", color: "#5a7a8f" }}>Aucun avis pour le moment</p>
       )}
+
+      {!isLoading && reviews.length > 0 && (
+        <div className={styles.notice__grid}>
+          {reviews.map((review) => (
+            <div key={review._id} className={styles.notice__card}>
+              <div className={styles.notice__cardHeader}>
+                <div className={styles.notice__cardAuthor}>{review.author}</div>
+                <div className={styles.notice__cardDate}>{review.date}</div>
+              </div>
+              <div className={styles.notice__cardRating}>
+                {renderStars(review.rating)}
+              </div>
+              <p className={styles.notice__cardText}>{review.text}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <div className={styles.notice__link}>
+        <a
+          href="https://www.resalib.fr/praticien/103436-reflex-bienetre-reflexologue-saint-benoit#avis"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Voir tous les avis sur Resalib
+        </a>
+      </div>
     </div>
   );
 }

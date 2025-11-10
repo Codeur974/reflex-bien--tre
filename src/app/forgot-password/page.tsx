@@ -54,7 +54,7 @@ export default function ForgotPasswordPage() {
         <h1 className={styles.login__title}>Mot de passe oublié ?</h1>
 
         <p style={{ textAlign: "center", marginBottom: "1.5rem", color: "#5a7a8f" }}>
-          Entrez votre adresse email et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+          Entrez votre adresse email et je vous enverrai un lien pour réinitialiser votre mot de passe.
         </p>
 
         {error && (

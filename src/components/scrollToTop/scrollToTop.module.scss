@@ -1,0 +1,67 @@
+.scrollToTop {
+  position: fixed;
+  bottom: 85px;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #5fd7b0 0%, #4fc3f7 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(95, 215, 176, 0.4);
+  z-index: 999;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+
+  &_visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    background: linear-gradient(135deg, #4fc3f7 0%, #5fd7b0 100%);
+    box-shadow: 0 6px 25px rgba(95, 215, 176, 0.6);
+    transform: translateY(-3px);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 15px rgba(95, 215, 176, 0.4);
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  @media (max-width: 768px) {
+    bottom: 75px;
+    right: 1.5rem;
+    width: 45px;
+    height: 45px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    bottom: 70px;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

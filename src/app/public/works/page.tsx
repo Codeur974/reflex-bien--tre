@@ -24,13 +24,13 @@ export default function WorksPage() {
     dispatch(fetchWorks());
   }, [dispatch]);
 
-  if (isLoading) return <div className={styles.loading}>Chargement des travaux...</div>;
+  if (isLoading) return <div className={styles.loading}>Chargement des photos...</div>;
   if (error) return <div className={styles.error}>Erreur : {error}</div>;
-  if (!works || works.length === 0) return <div className={styles.error}>Aucun travail trouvé.</div>;
+  if (!works || works.length === 0) return <div className={styles.error}>Aucune photo trouvée.</div>;
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.pageTitle}>Mes Travaux</h1>
+      <h1 className={styles.pageTitle}>Photos de mes interventions</h1>
 
       <button onClick={() => router.back()} className={styles.backButton}>
         ← Retour
@@ -135,7 +135,7 @@ export default function WorksPage() {
                   );
                 })
               ) : (
-                <div className={styles.emptyState}>Aucun média pour ce travail.</div>
+                <div className={styles.emptyState}>Aucun média pour cette intervention.</div>
               )}
             </div>
           </div>

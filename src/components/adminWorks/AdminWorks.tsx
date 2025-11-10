@@ -43,7 +43,7 @@ function AdminWorks() {
           onClick={handleToggleForm}
           className={styles.adminWorks__addButton}
         >
-          {showForm ? "Annuler" : "+ Ajouter un travail"}
+          {showForm ? "Annuler" : "+ Ajouter une photo"}
         </button>
       </div>
 

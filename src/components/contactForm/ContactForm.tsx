@@ -42,7 +42,7 @@ function ContactForm() {
       const data = await response.json();
 
       if (response.ok) {
-        setSubmitMessage(data.message || "Votre message a été envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.");
+        setSubmitMessage(data.message || "Votre message a été envoyé avec succès ! Je vous répondrai dans les plus brefs délais.");
         setFormData({
           name: "",
           email: "",
@@ -63,9 +63,9 @@ function ContactForm() {
 
   return (
     <div className={styles.contactForm}>
-      <h2 className={styles.contactForm__title}>Envoyez-nous un message</h2>
+      <h2 className={styles.contactForm__title}>Envoyez-moi un message</h2>
       <p className={styles.contactForm__subtitle}>
-        Vous avez une question ? Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.
+        Vous avez une question ? Remplissez le formulaire ci-dessous et je vous répondrai rapidement.
       </p>
 
       <form onSubmit={handleSubmit} className={styles.contactForm__form}>

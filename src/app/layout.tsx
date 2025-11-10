@@ -6,6 +6,7 @@ import { Provider } from "react-redux"; // Import du Provider Redux
 import { store } from "../store"; // Import du store Redux
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
+import ScrollToTop from "@/components/scrollToTop/ScrollToTop";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <ScrollToTop />
         </Provider>
       </body>
     </html>

@@ -49,7 +49,7 @@ function Activity() {
               <Slider items={sortedWorks} />
               <div style={{ marginTop: "1rem", textAlign: "center" }}>
                 <Link href="/public/works" className={styles.linkToWorks}>
-                  Voir tous les travaux
+                  Voir toutes les photos
                 </Link>
               </div>
             </>

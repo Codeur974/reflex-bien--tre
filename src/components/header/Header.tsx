@@ -12,6 +12,7 @@ import styles from "./header.module.scss";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isReflexoDropdownOpen, setIsReflexoDropdownOpen] = useState(false);
   const { token, role, isHydrated } = useSelector((state: RootState) => state.auth);
   const pathname = usePathname();
   const router = useRouter();
@@ -85,14 +86,60 @@ export default function Header() {
                     Accueil
                   </Link>
                 </li>
-                <li>
+                <li
+                  className={pathname === "/public/reflexo" ? styles.dropdown : ""}
+                  onMouseEnter={() => pathname === "/public/reflexo" && setIsReflexoDropdownOpen(true)}
+                  onMouseLeave={() => setIsReflexoDropdownOpen(false)}
+                >
                   <Link
                     href="/public/reflexo"
-                    onClick={() => setIsMenuOpen(false)}
                     className={pathname === "/public/reflexo" ? styles.active : ""}
+                    onClick={(e) => {
+                      if (window.innerWidth <= 768 && pathname === "/public/reflexo") {
+                        e.preventDefault();
+                        setIsReflexoDropdownOpen(!isReflexoDropdownOpen);
+                      }
+                    }}
                   >
                     Réfléxologie plantaire
                   </Link>
+                  {pathname === "/public/reflexo" && (
+                    <ul className={`${styles.dropdownMenu} ${isReflexoDropdownOpen ? styles.dropdownMenu_open : ""}`}>
+                    <li>
+                      <Link
+                        href="/public/reflexo#definition"
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setIsReflexoDropdownOpen(false);
+                        }}
+                      >
+                        Qu&apos;est-ce que la réflexologie plantaire ?
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/public/reflexo#sportif"
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setIsReflexoDropdownOpen(false);
+                        }}
+                      >
+                        Réflexologie du sportif
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/public/reflexo#soin-support"
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setIsReflexoDropdownOpen(false);
+                        }}
+                      >
+                        Réflexologie comme soin de support
+                      </Link>
+                    </li>
+                  </ul>
+                  )}
                 </li>
                 <li>
                   <Link

@@ -8,7 +8,7 @@ function ContactClosing() {
         <div className={styles.closing__icon}>💚</div>
         <h3 className={styles.closing__title}>Merci de votre confiance !</h3>
         <p className={styles.closing__text}>
-          Nous sommes impatients de vous accompagner dans votre parcours de bien-être.
+          Je suis impatiente de vous accompagner dans votre parcours de bien-être.
           Votre message sera traité avec attention et vous recevrez une réponse dans les plus brefs délais.
         </p>
       </div>
