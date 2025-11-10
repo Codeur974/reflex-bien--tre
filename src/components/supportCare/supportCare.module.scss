@@ -62,15 +62,25 @@
     float: left;
     margin: 0 2rem 1.5rem 0;
     max-width: 250px;
+    width: 100%;
     height: auto;
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(95, 215, 176, 0.2);
 
+    @media (max-width: 1024px) {
+      max-width: 220px;
+      margin: 0 1.5rem 1.5rem 0;
+    }
+
     @media (max-width: 768px) {
       float: none;
       display: block;
-      max-width: 100%;
+      max-width: 50%;
       margin: 0 auto 2rem;
+    }
+
+    @media (max-width: 480px) {
+      max-width: 60%;
     }
   }
 
@@ -217,18 +227,24 @@
   &__seanceWrapper {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     margin: 1.5rem 0;
-    max-width: 800px;
+    max-width: 900px;
+
+    @media (max-width: 1200px) {
+      max-width: 100%;
+      gap: 1.5rem;
+    }
 
     @media (max-width: 968px) {
       flex-direction: column;
-      max-width: 100%;
+      gap: 1rem;
     }
   }
 
   &__seanceTextBlock {
     flex: 1;
+    min-width: 0;
   }
 
   &__seanceImage {
@@ -240,12 +256,29 @@
     box-shadow: 0 8px 25px rgba(95, 215, 176, 0.3);
     object-fit: cover;
 
+    @media (max-width: 1200px) {
+      max-width: 260px;
+      width: 260px;
+      height: 260px;
+    }
+
     @media (max-width: 968px) {
-      max-width: 100%;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 1;
-      margin: 0 auto 2rem;
+      max-width: 250px;
+      width: 250px;
+      height: 250px;
+      margin: 0 auto 1rem;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 220px;
+      width: 220px;
+      height: 220px;
+    }
+
+    @media (max-width: 480px) {
+      max-width: 180px;
+      width: 180px;
+      height: 180px;
     }
   }
 
