@@ -47,6 +47,8 @@ function Slider({ items }: SliderProps) {
                   item.cover.startsWith("/") ? item.cover : "/" + item.cover
                 }`;
 
+          const isVideo = item.cover.match(/\.(mp4|webm|ogg|mov)$/i);
+
           return (
             <div
               key={item._id}
@@ -55,12 +57,23 @@ function Slider({ items }: SliderProps) {
               }`}
             >
               {item.cover ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={imageUrl}
-                  alt={item.title}
-                  className={styles.slider__image}
-                />
+                isVideo ? (
+                  <video
+                    src={imageUrl}
+                    className={styles.slider__image}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={imageUrl}
+                    alt={item.title}
+                    className={styles.slider__image}
+                  />
+                )
               ) : (
                 <div className={styles.slider__imagePlaceholder}>
                   Image non disponible

@@ -154,12 +154,12 @@ function AdminWorksForm({ editingWork, onCancel }: AdminWorksFormProps) {
 
       <div className={styles.adminWorks__field}>
         <label htmlFor="cover">
-          Image de couverture {editingWork && "(laisser vide pour garder l'actuelle)"}
+          Image/Vidéo de couverture {editingWork && "(laisser vide pour garder l'actuelle)"}
         </label>
         <input
           type="file"
           id="cover"
-          accept="image/*"
+          accept="image/*,video/*"
           onChange={handleCoverChange}
           required={!editingWork}
         />

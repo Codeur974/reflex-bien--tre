@@ -154,12 +154,12 @@ function AdminNewsForm({ editingNews, onCancel }: AdminNewsFormProps) {
 
       <div className={styles.adminNews__field}>
         <label htmlFor="cover">
-          Image de couverture {editingNews && "(laisser vide pour garder l'actuelle)"}
+          Image/Vidéo de couverture {editingNews && "(laisser vide pour garder l'actuelle)"}
         </label>
         <input
           type="file"
           id="cover"
-          accept="image/*"
+          accept="image/*,video/*"
           onChange={handleCoverChange}
           required={!editingNews}
         />
