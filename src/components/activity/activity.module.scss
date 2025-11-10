@@ -114,24 +114,17 @@
 
   // Tablette portrait
   @media (max-width: 900px) {
-    flex-direction: column;
-    align-items: center;
     gap: 2rem;
 
-    &__newsWrapper {
-      margin-top: -8rem;
-    }
-
+    &__newsWrapper,
     &__worksWrapper {
-      margin-top: 0;
+      margin-top: -10rem;
     }
 
     &__works,
     &__actu {
-      width: 90%;
-      max-width: 400px;
-      height: auto;
-      min-height: 250px;
+      width: 350px;
+      height: 280px;
     }
   }
 
