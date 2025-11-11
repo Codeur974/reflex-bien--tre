@@ -141,7 +141,7 @@ function AdminWorksForm({ editingWork, onCancel }: AdminWorksFormProps) {
       </div>
 
       <div className={styles.adminWorks__field}>
-        <label htmlFor="date">Date de l'événement *</label>
+        <label htmlFor="date">Date de l&apos;événement *</label>
         <input
           type="date"
           id="date"
@@ -154,7 +154,7 @@ function AdminWorksForm({ editingWork, onCancel }: AdminWorksFormProps) {
 
       <div className={styles.adminWorks__field}>
         <label htmlFor="cover">
-          Image/Vidéo de couverture {editingWork && "(laisser vide pour garder l'actuelle)"}
+          Image/Vidéo de couverture {editingWork && "(laisser vide pour garder l&apos;actuelle)"}
         </label>
         <input
           type="file"
@@ -167,7 +167,7 @@ function AdminWorksForm({ editingWork, onCancel }: AdminWorksFormProps) {
 
       <div className={styles.adminWorks__field}>
         <label htmlFor="files">
-          Photos/Vidéos de l'événement (plusieurs fichiers possibles)
+          Photos/Vidéos de l&apos;événement (plusieurs fichiers possibles)
         </label>
         <input
           type="file"

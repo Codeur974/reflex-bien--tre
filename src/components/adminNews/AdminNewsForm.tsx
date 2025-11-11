@@ -141,7 +141,7 @@ function AdminNewsForm({ editingNews, onCancel }: AdminNewsFormProps) {
       </div>
 
       <div className={styles.adminNews__field}>
-        <label htmlFor="date">Date de l'annonce *</label>
+        <label htmlFor="date">Date de l&apos;annonce *</label>
         <input
           type="date"
           id="date"
@@ -154,7 +154,7 @@ function AdminNewsForm({ editingNews, onCancel }: AdminNewsFormProps) {
 
       <div className={styles.adminNews__field}>
         <label htmlFor="cover">
-          Image/Vidéo de couverture {editingNews && "(laisser vide pour garder l'actuelle)"}
+          Image/Vidéo de couverture {editingNews && "(laisser vide pour garder l&apos;actuelle)"}
         </label>
         <input
           type="file"
@@ -167,7 +167,7 @@ function AdminNewsForm({ editingNews, onCancel }: AdminNewsFormProps) {
 
       <div className={styles.adminNews__field}>
         <label htmlFor="files">
-          Photos/Vidéos de l'annonce (plusieurs fichiers possibles)
+          Photos/Vidéos de l&apos;annonce (plusieurs fichiers possibles)
         </label>
         <input
           type="file"

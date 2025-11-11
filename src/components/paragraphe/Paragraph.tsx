@@ -8,7 +8,6 @@ function Paragraph() {
   if (!section) return <div>Aucune donnée</div>;
 
   const left = section.paragraphs || [];
-  const right = section.paragraphs2 || [];
 
   const firstImage = left.find(para => para.coverImage)?.coverImage;
 
