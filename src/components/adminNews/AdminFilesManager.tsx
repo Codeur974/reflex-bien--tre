@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { News, File as NewsFile } from "@/types/types";
+import { News } from "@/types/types";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import styles from "./adminNews.module.scss";
