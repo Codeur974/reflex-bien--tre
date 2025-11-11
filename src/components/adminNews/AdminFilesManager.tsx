@@ -16,6 +16,7 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
   const { token } = useSelector((state: RootState) => state.auth);
   const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
 
+  const files = news.files;
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [description, setDescription] = useState("");
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
