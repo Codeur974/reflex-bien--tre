@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Work, File as WorkFile } from "@/types/types";
+import { Work } from "@/types/types";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import styles from "./adminWorks.module.scss";

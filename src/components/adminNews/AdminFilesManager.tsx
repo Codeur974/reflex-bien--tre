@@ -16,7 +16,6 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
   const { token } = useSelector((state: RootState) => state.auth);
   const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
 
-  const [files, setFiles] = useState<NewsFile[]>(news.files);
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [description, setDescription] = useState("");
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
@@ -102,7 +101,7 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
       <div className={styles.filesManager__overlay} onClick={onClose}></div>
       <div className={styles.filesManager__modal}>
         <div className={styles.filesManager__header}>
-          <h3>Gérer les photos de "{news.title}"</h3>
+          <h3>Gérer les photos de &quot;{news.title}&quot;</h3>
           <button onClick={onClose} className={styles.filesManager__closeBtn}>
             ×
           </button>
