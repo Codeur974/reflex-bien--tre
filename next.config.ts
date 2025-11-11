@@ -14,6 +14,11 @@ const nextConfig = {
         port: "4000",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "pat-reflexo-backend.onrender.com",
+        pathname: "/uploads/**",
+      },
     ],
   },
 };
