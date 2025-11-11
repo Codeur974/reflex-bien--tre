@@ -33,7 +33,7 @@ const dynalight = Dynalight({
 });
 
 export const metadata: Metadata = {
-  title: "Reflex'Bien-être | Réflexologie plantaire et bien-être à La Réunion",
+  title: "Reflex'Bien-être",
   description:
     "Patricia Sermande, réflexologue à La Réunion, propose séances individuelles, ateliers en entreprise et accompagnement bien-être pour sportifs, particuliers et professionnels.",
   metadataBase: new URL("https://reflex-bien-etre.fr"),
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Reflex'Bien-être | Réflexologie plantaire et bien-être à La Réunion",
+    title: "Reflex'Bien-être",
     description:
       "Découvrez les bienfaits de la réflexologie plantaire, des ateliers bien-être en entreprise et des accompagnements personnalisés avec Patricia Sermande.",
     url: "https://reflex-bien-etre.fr",
