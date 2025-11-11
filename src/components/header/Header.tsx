@@ -126,7 +126,8 @@ export default function Header() {
     <div className={styles.header}>
       <div className={styles.header__logo}>
         <Link href="/">
-          <Image src="/images/logo.jpg" alt="Logo" width={200} height={200} unoptimized />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/logo.jpg" alt="Logo" width={200} height={200} />
         </Link>
       </div>
       <div className={styles.header__content}>
