@@ -95,6 +95,9 @@ export default function Header() {
   const closeDropdown = () => {
     isClosingRef.current = true;
     setIsReflexoDropdownOpen(false);
+    if (typeof window !== "undefined" && window.innerWidth <= 1024) {
+      setIsMenuOpen(false);
+    }
     // Forcer le re-render et empêcher la réouverture
     if (dropdownRef.current) {
       dropdownRef.current.classList.remove(styles.dropdownMenu_open);

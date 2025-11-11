@@ -1,4 +1,4 @@
-.container {
+﻿.container {
   margin-top: 40px;
   display: flex;
   justify-content: center;
@@ -59,7 +59,7 @@
     line-height: 1.9;
     color: #5a7a8f;
     text-align: justify;
-    font-family: "Lato", "roboto", sans-serif;
+    font-family: var(--font-lato), "roboto", sans-serif;
     font-weight: 400;
 
     p {
@@ -89,7 +89,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     letter-spacing: 0.5px;
 
     &::after {
@@ -200,3 +200,4 @@
     padding: 0 5px;
   }
 }
+

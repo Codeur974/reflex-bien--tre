@@ -1,4 +1,4 @@
-.container {
+﻿.container {
   margin-top: 14rem;
   padding: 0 20px 40px;
   background: linear-gradient(to bottom, #f8fbff 0%, #e8f5ff 100%);
@@ -205,7 +205,7 @@
     font-size: 1.2rem;
     text-align: center;
     margin: 0;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     font-weight: 600;
     background: rgba(61, 155, 134, 0.9);
     padding: 12px 30px;
@@ -270,7 +270,7 @@
   font-weight: 600;
   text-align: center;
   margin: 0 0 2rem 0;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   letter-spacing: 0.5px;
   position: relative;
   padding-bottom: 15px;
@@ -331,3 +331,4 @@
     padding: 10px 20px;
   }
 }
+

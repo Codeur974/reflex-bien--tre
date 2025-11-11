@@ -1,4 +1,4 @@
-.container {
+﻿.container {
   min-height: 100vh;
   background: linear-gradient(to bottom, #f8fbff 0%, #e8f5ff 100%);
   padding: 4rem 20px 40px;
@@ -11,7 +11,7 @@
   color: #3d9b86;
   text-align: center;
   margin: 0;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -35,7 +35,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   margin-bottom: 2rem;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
 
   &:hover {
     background: rgba(95, 215, 176, 0.1);
@@ -79,7 +79,7 @@
     font-size: 2.5rem;
     color: #3d9b86;
     margin: 0 0 15px;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     font-weight: 700;
 
     @media (max-width: 768px) {
@@ -94,13 +94,13 @@
   color: #5a7a8f;
   margin: 0 0 15px;
   line-height: 1.6;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
 }
 
 .date {
   font-size: 1rem;
   color: #5a7a8f;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
 
   strong {
     color: #3d9b86;
@@ -172,7 +172,7 @@
   font-style: italic;
   color: #5a7a8f;
   line-height: 1.5;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   min-height: 60px;
   background: linear-gradient(to bottom, rgba(95, 215, 176, 0.02), white);
 }
@@ -183,7 +183,7 @@
   color: #5a7a8f;
   font-style: italic;
   font-size: 1.1rem;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
 }
 
 .loading,
@@ -194,7 +194,7 @@
   justify-content: center;
   font-size: 1.2rem;
   color: #3d9b86;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   background: linear-gradient(to bottom, #f8fbff 0%, #e8f5ff 100%);
 }
 
@@ -260,3 +260,4 @@
     }
   }
 }
+

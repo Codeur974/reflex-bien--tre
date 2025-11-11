@@ -1,4 +1,4 @@
-.adminPage {
+﻿.adminPage {
   max-width: 1400px;
   margin: 0 auto;
   padding: 40px 20px;
@@ -26,7 +26,7 @@
 .sectionTitle {
   font-size: 2rem;
   color: #3d9b86;
-  font-family: "Lato", sans-serif;
+  font-family: var(--font-lato), sans-serif;
   margin: 0;
   padding: 25px 30px;
   cursor: pointer;
@@ -76,7 +76,7 @@
     font-size: 1.1rem;
     color: #5a7a8f;
     margin-bottom: 30px;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     line-height: 1.6;
 
     @media (max-width: 768px) {
@@ -96,7 +96,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(95, 215, 176, 0.3);
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
 
     &:hover:not(:disabled) {
       transform: translateY(-2px);
@@ -123,7 +123,7 @@
     padding: 15px 20px;
     border-radius: 8px;
     font-size: 1rem;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     font-weight: 600;
     background: rgba(95, 215, 176, 0.1);
     color: #3d9b86;
@@ -135,3 +135,4 @@
     }
   }
 }
+

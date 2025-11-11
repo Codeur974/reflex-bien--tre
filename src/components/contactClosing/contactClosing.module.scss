@@ -1,4 +1,4 @@
-.closing {
+﻿.closing {
   max-width: 1200px;
   margin: 50px auto 60px;
   padding: 0 40px;
@@ -79,7 +79,7 @@
     color: #3d9b86;
     font-weight: 700;
     margin: 0 0 20px;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     letter-spacing: 0.5px;
     text-shadow: 1px 1px 2px rgba(95, 215, 176, 0.2);
 
@@ -99,7 +99,7 @@
     color: #5a7a8f;
     font-size: 1.2rem;
     line-height: 1.9;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     font-weight: 500;
     max-width: 800px;
     margin: 0 auto;
@@ -133,3 +133,4 @@
     transform: scale(1.1);
   }
 }
+

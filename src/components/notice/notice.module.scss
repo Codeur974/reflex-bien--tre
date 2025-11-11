@@ -1,4 +1,4 @@
-.notice {
+﻿.notice {
   margin: 80px auto 80px;
   width: 100%;
   max-width: 1200px;
@@ -17,7 +17,7 @@
     font-size: 2rem;
     margin-bottom: 30px;
     color: #3d9b86;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     font-weight: 700;
     position: relative;
     padding-bottom: 15px;
@@ -49,7 +49,7 @@
     border-radius: 25px;
     color: #f57c00;
     font-weight: 600;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
 
     span {
       font-size: 0.95rem;
@@ -182,7 +182,7 @@
     font-size: 1.1rem;
     font-weight: 700;
     color: #3d9b86;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
 
     @media (max-width: 768px) {
       font-size: 1rem;
@@ -192,7 +192,7 @@
   &__cardDate {
     font-size: 0.9rem;
     color: #999;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
 
     @media (max-width: 768px) {
       font-size: 0.85rem;
@@ -214,7 +214,7 @@
     font-size: 1rem;
     line-height: 1.7;
     color: #5a7a8f;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     margin: 0;
     font-style: italic;
 
@@ -236,7 +236,7 @@
       border-radius: 25px;
       font-size: 1rem;
       font-weight: 600;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(95, 215, 176, 0.3);
 
@@ -252,3 +252,4 @@
     }
   }
 }
+

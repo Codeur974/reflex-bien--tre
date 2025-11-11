@@ -1,4 +1,4 @@
-.adminNews {
+﻿.adminNews {
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
@@ -54,7 +54,7 @@
       font-size: 1.5rem;
       color: #3d9b86;
       margin: 0 0 25px;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
 
       @media (max-width: 768px) {
         font-size: 1.3rem;
@@ -72,7 +72,7 @@
       color: #5a7a8f;
       font-weight: 600;
       margin-bottom: 8px;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
     }
 
     input[type="text"],
@@ -83,7 +83,7 @@
       border: 2px solid rgba(95, 215, 176, 0.3);
       border-radius: 8px;
       font-size: 1rem;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
       transition: all 0.3s ease;
 
       &:focus {
@@ -104,7 +104,7 @@
       padding: 10px;
       border: 2px dashed rgba(95, 215, 176, 0.3);
       border-radius: 8px;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
       cursor: pointer;
       transition: all 0.3s ease;
 
@@ -171,7 +171,7 @@
       font-size: 1.5rem;
       color: #3d9b86;
       margin: 0 0 25px;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
 
       @media (max-width: 768px) {
         font-size: 1.3rem;
@@ -264,7 +264,7 @@
       font-size: 1.2rem;
       color: #3d9b86;
       margin: 0 0 10px;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
       font-weight: 700;
     }
   }
@@ -273,7 +273,7 @@
     font-size: 0.9rem;
     color: #5a7a8f;
     margin: 10px 0;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     line-height: 1.5;
     font-style: italic;
   }
@@ -282,14 +282,14 @@
     font-size: 0.95rem;
     color: #5a7a8f;
     margin: 8px 0;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
   }
 
   &__cardFiles {
     font-size: 0.9rem;
     color: #5a7a8f;
     margin: 8px 0;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     font-style: italic;
   }
 
@@ -307,7 +307,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
     }
   }
 
@@ -392,7 +392,7 @@
       margin: 0;
       color: #3d9b86;
       font-size: 1.5rem;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
     }
   }
 
@@ -497,7 +497,7 @@
       border: 2px solid rgba(95, 215, 176, 0.3);
       border-radius: 8px;
       font-size: 0.95rem;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
       resize: vertical;
       margin-bottom: 10px;
 
@@ -588,3 +588,4 @@
     }
   }
 }
+

@@ -1,4 +1,4 @@
-.hero {
+﻿.hero {
   margin-top: 20px;
   position: relative;
   width: 100%;
@@ -19,7 +19,7 @@
     color: white;
     transform: translate(-50%, -50%);
     font-size: 4rem;
-    font-family: "Dynalight";
+    font-family: var(--font-dynalight);
     font-weight: 100;
     text-align: center;
     text-shadow: 6px 6px 12px rgba(95, 215, 176, 0.8);
@@ -60,8 +60,8 @@
 
   // Mobile
   @media (max-width: 768px) {
-    height: 400px;
-    min-height: 300px;
+    height: 320px;
+    min-height: 240px;
     margin-top: 5px;
 
     &__title {
@@ -81,8 +81,8 @@
 
   // Petit mobile
   @media (max-width: 480px) {
-    height: 350px;
-    min-height: 250px;
+    height: 260px;
+    min-height: 200px;
 
     &__title {
       font-size: 1.3rem;
@@ -95,10 +95,10 @@
     }
   }
 
-  // Très petit mobile
+  // TrÃ¨s petit mobile
   @media (max-width: 360px) {
-    height: 300px;
-    min-height: 200px;
+    height: 220px;
+    min-height: 180px;
 
     &__title {
       font-size: 1.1rem;
@@ -106,3 +106,4 @@
     }
   }
 }
+

@@ -1,4 +1,4 @@
-.reflexo {
+﻿.reflexo {
   margin: 0;
   padding: 2rem 1rem;
   background: linear-gradient(to bottom, #f8fcfb 0%, #ffffff 100%);
@@ -69,7 +69,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     letter-spacing: 0.5px;
 
     &::after {
@@ -96,7 +96,7 @@
     line-height: 1.9;
     color: #5a7a8f;
     text-align: justify;
-    font-family: "Lato", "roboto", sans-serif;
+    font-family: var(--font-lato), "roboto", sans-serif;
     font-weight: 400;
 
     p {
@@ -136,7 +136,7 @@
     line-height: 1.9;
     color: #5a7a8f;
     text-align: justify;
-    font-family: "Lato", "roboto", sans-serif;
+    font-family: var(--font-lato), "roboto", sans-serif;
     font-weight: 400;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
@@ -158,7 +158,7 @@
     line-height: 1.9;
     color: #5a7a8f;
     text-align: center;
-    font-family: "Lato", "roboto", sans-serif;
+    font-family: var(--font-lato), "roboto", sans-serif;
     font-weight: 400;
     margin-bottom: 1.5rem;
 
@@ -334,7 +334,7 @@
       color: #3d9b86;
       font-size: 1.9rem;
       font-weight: 500;
-      font-family: "Lato", sans-serif;
+      font-family: var(--font-lato), sans-serif;
       letter-spacing: 0.5px;
       margin: 0 auto 1rem;
       position: relative;
@@ -371,7 +371,7 @@
     font-size: 1.1rem;
     color: #5a7a8f;
     margin: 0;
-    font-family: "Lato", "roboto", sans-serif;
+    font-family: var(--font-lato), "roboto", sans-serif;
     font-weight: 400;
     letter-spacing: 0.3px;
 
@@ -396,7 +396,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     letter-spacing: 0.5px;
 
     &::after {
@@ -492,7 +492,7 @@
       line-height: 1.8;
       color: #2d6a4f;
       margin: 0;
-      font-family: "Lato", "roboto", sans-serif;
+      font-family: var(--font-lato), "roboto", sans-serif;
       font-weight: 500;
 
       strong {
@@ -541,7 +541,7 @@
     font-size: 1.1rem;
     line-height: 1.9;
     color: #5a7a8f;
-    font-family: "Lato", "roboto", sans-serif;
+    font-family: var(--font-lato), "roboto", sans-serif;
     font-weight: 400;
 
     li {
@@ -788,7 +788,7 @@
     color: white;
     padding: 15px;
     font-weight: 600;
-    font-family: "Lato", sans-serif;
+    font-family: var(--font-lato), sans-serif;
     text-align: center;
     border-right: 1px solid rgba(255, 255, 255, 0.2);
 
@@ -802,7 +802,7 @@
     font-size: 1.1rem;
     color: #5a7a8f;
     border-right: 1px solid rgba(95, 215, 176, 0.2);
-    font-family: "Lato", "roboto", sans-serif;
+    font-family: var(--font-lato), "roboto", sans-serif;
     font-weight: 400;
     letter-spacing: 0.3px;
     line-height: 1.6;
@@ -843,3 +843,4 @@
     }
   }
 }
+

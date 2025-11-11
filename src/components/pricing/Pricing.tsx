@@ -144,15 +144,23 @@ export default function Pricing() {
       <div className={styles.pricing__referralSection}>
         <div className={styles.pricing__referralCard}>
           <div className={styles.pricing__referralIcon}>🎁</div>
-          <h4>Parrainez vos proches et profitez d&apos;avantages exclusifs !</h4>
+          <h4>
+            Parrainez vos proches et profitez d&apos;avantages exclusifs !
+          </h4>
           <ul className={styles.pricing__referralList}>
             <li>
-              <strong>-50% sur votre prochaine séance</strong> pour le parrainage d&apos;un nouveau client
-              <span className={styles.pricing__referralValidity}>(valable 3 mois)</span>
+              <strong>-50% sur votre prochaine séance</strong> pour le
+              parrainage d&apos;un nouveau client
+              <span className={styles.pricing__referralValidity}>
+                (valable 3 mois)
+              </span>
             </li>
             <li>
-              <strong>Une séance gratuite</strong> pour le parrainage de 2 nouveaux clients
-              <span className={styles.pricing__referralValidity}>(valable 3 mois)</span>
+              <strong>Une séance gratuite</strong> pour le parrainage de 2
+              nouveaux clients
+              <span className={styles.pricing__referralValidity}>
+                (valable 3 mois)
+              </span>
             </li>
           </ul>
         </div>
@@ -185,7 +193,7 @@ export default function Pricing() {
 
       <div className={styles.pricing__events}>
         <p>
-          N&apos;hésitez pas à consulter la page des{" "}
+          N&apos;hésitez pas à consulter la page des
           <Link href="/#evenements" className={styles.pricing__eventsLink}>
             futurs événements liés au bien-être
           </Link>
