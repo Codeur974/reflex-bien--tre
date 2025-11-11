@@ -15,7 +15,7 @@ export default function Header() {
   const [isReflexoDropdownOpen, setIsReflexoDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLUListElement>(null);
   const isClosingRef = useRef(false);
-  const { token, role, isHydrated } = useSelector((state: RootState) => state.auth);
+  const { token, role } = useSelector((state: RootState) => state.auth);
   const pathname = usePathname();
   const router = useRouter();
   const dispatch = useDispatch<AppDispatch>();
@@ -28,7 +28,9 @@ export default function Header() {
   // Forcer la synchronisation entre l'état et le DOM
   useEffect(() => {
     if (dropdownRef.current) {
-      const hasClass = dropdownRef.current.classList.contains(styles.dropdownMenu_open);
+      const hasClass = dropdownRef.current.classList.contains(
+        styles.dropdownMenu_open
+      );
 
       if (!isReflexoDropdownOpen && hasClass) {
         dropdownRef.current.classList.remove(styles.dropdownMenu_open);
@@ -40,7 +42,9 @@ export default function Header() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (dropdownRef.current && !isReflexoDropdownOpen) {
-        const hasClass = dropdownRef.current.classList.contains(styles.dropdownMenu_open);
+        const hasClass = dropdownRef.current.classList.contains(
+          styles.dropdownMenu_open
+        );
         if (hasClass) {
           dropdownRef.current.classList.remove(styles.dropdownMenu_open);
         }
@@ -58,7 +62,7 @@ export default function Header() {
       const dropdownMenu = target.closest(`.${styles.dropdownMenu}`);
 
       // Ne rien faire si on clique sur un lien du menu (ils gèrent eux-mêmes la fermeture)
-      if (target.tagName === 'A' && dropdownMenu) {
+      if (target.tagName === "A" && dropdownMenu) {
         return;
       }
 
@@ -71,20 +75,20 @@ export default function Header() {
     // Ajouter un petit délai pour éviter les conflits
     if (isReflexoDropdownOpen) {
       const timeoutId = setTimeout(() => {
-        document.addEventListener('click', handleClickOutside, true);
-        document.addEventListener('touchend', handleClickOutside, true);
+        document.addEventListener("click", handleClickOutside, true);
+        document.addEventListener("touchend", handleClickOutside, true);
       }, 100);
 
       return () => {
         clearTimeout(timeoutId);
-        document.removeEventListener('click', handleClickOutside, true);
-        document.removeEventListener('touchend', handleClickOutside, true);
+        document.removeEventListener("click", handleClickOutside, true);
+        document.removeEventListener("touchend", handleClickOutside, true);
       };
     }
 
     return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-      document.removeEventListener('touchend', handleClickOutside, true);
+      document.removeEventListener("click", handleClickOutside, true);
+      document.removeEventListener("touchend", handleClickOutside, true);
     };
   }, [isReflexoDropdownOpen]);
 
@@ -129,7 +133,7 @@ export default function Header() {
         <h1>
           <span
             onDoubleClick={handlePatriciaDoubleClick}
-            style={{ cursor: 'default', userSelect: 'none' }}
+            style={{ cursor: "default", userSelect: "none" }}
             className={styles.header__mainTitle}
           >
             Patricia Sermande
@@ -150,181 +154,218 @@ export default function Header() {
           <span className={isMenuOpen ? styles.open : ""}></span>
         </button>
 
-        <nav className={`${styles.header__nav} ${isMenuOpen ? styles.header__nav_open : ""}`}>
+        <nav
+          className={`${styles.header__nav} ${
+            isMenuOpen ? styles.header__nav_open : ""
+          }`}
+        >
           <ul>
             {/* Attendre que le composant soit monté côté client */}
             {!isMounted ? null : (
               <>
-            {/* Liens publics */}
-            {!token && (
-              <>
-                <li>
-                  <Link
-                    href="/"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={pathname === "/" ? styles.active : ""}
-                  >
-                    Accueil
-                  </Link>
-                </li>
-                <li
-                  className={pathname === "/public/reflexo" ? styles.dropdown : ""}
-                  onMouseEnter={() => {
-                    if (window.innerWidth > 1024 && pathname === "/public/reflexo") {
-                      setIsReflexoDropdownOpen(true);
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    if (window.innerWidth > 1024) {
-                      setIsReflexoDropdownOpen(false);
-                    }
-                  }}
-                >
-                  <Link
-                    href="/public/reflexo"
-                    className={pathname === "/public/reflexo" ? styles.active : ""}
-                    onClick={(e) => {
-                      if (pathname === "/public/reflexo" && window.innerWidth <= 1024) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        // Ne pas rouvrir si on est en train de fermer
-                        if (!isClosingRef.current) {
-                          setIsReflexoDropdownOpen(!isReflexoDropdownOpen);
-                        }
+                {/* Liens publics */}
+                {!token && (
+                  <>
+                    <li>
+                      <Link
+                        href="/"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={pathname === "/" ? styles.active : ""}
+                      >
+                        Accueil
+                      </Link>
+                    </li>
+                    <li
+                      className={
+                        pathname === "/public/reflexo" ? styles.dropdown : ""
                       }
-                    }}
-                  >
-                    Réfléxologie plantaire
-                  </Link>
-                  {pathname === "/public/reflexo" && (
-                    <ul ref={dropdownRef} className={`${styles.dropdownMenu} ${isReflexoDropdownOpen ? styles.dropdownMenu_open : ""}`}>
-                    <li>
-                      <Link
-                        href="/public/reflexo#definition"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          closeDropdown();
-                        }}
-                      >
-                        Qu&apos;est-ce que la réflexologie plantaire ?
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/public/reflexo#sportif"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          closeDropdown();
-                        }}
-                      >
-                        Réflexologie du sportif
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/public/reflexo#soin-support"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          closeDropdown();
-                        }}
-                      >
-                        Réflexologie comme soin de support
-                      </Link>
-                    </li>
-                  </ul>
-                  )}
-                </li>
-                <li>
-                  <Link
-                    href="/public/entreprise"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={pathname === "/public/entreprise" ? styles.active : ""}
-                  >
-                    Bien-être en entreprise
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/public/ofers"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={pathname === "/public/ofers" ? styles.active : ""}
-                  >
-                    Les offres
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/public/contact"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={pathname === "/public/contact" ? styles.active : ""}
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </>
-            )}
-
-            {/* Liens privés */}
-            {token && (
-              <>
-                <li>
-                  <Link
-                    href="/private/dashboard"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={pathname === "/private/dashboard" ? styles.active : ""}
-                  >
-                    Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/private/tracking"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={pathname === "/private/tracking" ? styles.active : ""}
-                  >
-                    Mon Suivi
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/private/newspaper"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={pathname === "/private/newspaper" ? styles.active : ""}
-                  >
-                    Mon Journal
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/private/payment"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={pathname === "/private/payment" ? styles.active : ""}
-                  >
-                    Page de paiement
-                  </Link>
-                </li>
-                {role === "admin" && (
-                  <li>
-                    <Link
-                      href="/private/admin"
-                      onClick={() => setIsMenuOpen(false)}
-                      className={pathname === "/private/admin" ? styles.active : ""}
+                      onMouseEnter={() => {
+                        if (
+                          window.innerWidth > 1024 &&
+                          pathname === "/public/reflexo"
+                        ) {
+                          setIsReflexoDropdownOpen(true);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (window.innerWidth > 1024) {
+                          setIsReflexoDropdownOpen(false);
+                        }
+                      }}
                     >
-                      Admin
-                    </Link>
-                  </li>
+                      <Link
+                        href="/public/reflexo"
+                        className={
+                          pathname === "/public/reflexo" ? styles.active : ""
+                        }
+                        onClick={(e) => {
+                          if (
+                            pathname === "/public/reflexo" &&
+                            window.innerWidth <= 1024
+                          ) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            // Ne pas rouvrir si on est en train de fermer
+                            if (!isClosingRef.current) {
+                              setIsReflexoDropdownOpen(!isReflexoDropdownOpen);
+                            }
+                          }
+                        }}
+                      >
+                        Réflexologie plantaire
+                      </Link>
+                      {pathname === "/public/reflexo" && (
+                        <ul
+                          ref={dropdownRef}
+                          className={`${styles.dropdownMenu} ${
+                            isReflexoDropdownOpen
+                              ? styles.dropdownMenu_open
+                              : ""
+                          }`}
+                        >
+                          <li>
+                            <Link
+                              href="/public/reflexo#definition"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                closeDropdown();
+                              }}
+                            >
+                              Qu&apos;est-ce que la réflexologie plantaire ?
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/public/reflexo#sportif"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                closeDropdown();
+                              }}
+                            >
+                              Réflexologie du sportif
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/public/reflexo#soin-support"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                closeDropdown();
+                              }}
+                            >
+                              Réflexologie comme soin de support
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
+                    </li>
+                    <li>
+                      <Link
+                        href="/public/entreprise"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={
+                          pathname === "/public/entreprise" ? styles.active : ""
+                        }
+                      >
+                        Bien-être en entreprise
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/public/ofers"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={
+                          pathname === "/public/ofers" ? styles.active : ""
+                        }
+                      >
+                        Les offres
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/public/contact"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={
+                          pathname === "/public/contact" ? styles.active : ""
+                        }
+                      >
+                        Contact
+                      </Link>
+                    </li>
+                  </>
                 )}
-                <li>
-                  <button
-                    onClick={handleLogout}
-                    className={styles.header__logoutButton}
-                  >
-                    Déconnexion
-                  </button>
-                </li>
+
+                {/* Liens privés */}
+                {token && (
+                  <>
+                    <li>
+                      <Link
+                        href="/private/dashboard"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={
+                          pathname === "/private/dashboard" ? styles.active : ""
+                        }
+                      >
+                        Dashboard
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/private/tracking"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={
+                          pathname === "/private/tracking" ? styles.active : ""
+                        }
+                      >
+                        Mon Suivi
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/private/newspaper"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={
+                          pathname === "/private/newspaper" ? styles.active : ""
+                        }
+                      >
+                        Mon Journal
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        href="/private/payment"
+                        onClick={() => setIsMenuOpen(false)}
+                        className={
+                          pathname === "/private/payment" ? styles.active : ""
+                        }
+                      >
+                        Page de paiement
+                      </Link>
+                    </li>
+                    {role === "admin" && (
+                      <li>
+                        <Link
+                          href="/private/admin"
+                          onClick={() => setIsMenuOpen(false)}
+                          className={
+                            pathname === "/private/admin" ? styles.active : ""
+                          }
+                        >
+                          Admin
+                        </Link>
+                      </li>
+                    )}
+                    <li>
+                      <button
+                        onClick={handleLogout}
+                        className={styles.header__logoutButton}
+                      >
+                        Déconnexion
+                      </button>
+                    </li>
+                  </>
+                )}
               </>
-            )}
-            </>
             )}
           </ul>
         </nav>

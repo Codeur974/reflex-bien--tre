@@ -20,12 +20,12 @@ function About() {
           <div className={styles.about__text}>
             <h2 className={styles.about__title}>Qui suis-je?</h2>
             <p>
-              Je suis praticienne en réflexologie plantaire et en cohérence
-              cardiaque. J’ai toujours voulu aider les gens à se sentir/aller
-              mieux. Après 20 années d&apos;expériences en tant qu’infirmière,
-              j’ai souhaité continuer à prendre soins grâce à des méthodes
-              naturelles qui favorisent le rétablissement de l&apos;organisme au
-              mieux de ses possibilités physiques et émotionnelles.
+              Je suis réflexologue plantaire. J’ai toujours voulu aider les gens
+              à se sentir mieux. Après 20 années d&apos;expériences en tant
+              qu’infirmière, j’ai souhaité continuer à prendre soins grâce à une
+              méthode naturelle qui favorise le rétablissement de
+              l&apos;organisme au mieux de ses possibilités physiques et
+              émotionnelles.
             </p>
             <h2 className={styles.about__title}>
               Pourquoi la réflexologie plantaire?

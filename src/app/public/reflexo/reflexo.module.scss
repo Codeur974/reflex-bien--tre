@@ -18,6 +18,7 @@
     color: #333;
     font-weight: 600;
     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.15);
+    text-align: center;
 
     @media (max-width: 768px) {
       margin: 0 1rem 2rem;
@@ -129,6 +130,10 @@
       line-height: 1.7;
       text-align: left;
     }
+  }
+
+  &__textHighlight {
+    color: #5a7a8f;
   }
 
   &__textNoMargin {
