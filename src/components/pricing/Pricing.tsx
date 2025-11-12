@@ -24,14 +24,14 @@ export default function Pricing() {
         </div>
       </div>
 
-      <h3 className={styles.pricing__sectionTitle}>Tarifs</h3>
+      <h3 id="tarifs-individuels" className={styles.pricing__sectionTitle}>Tarifs</h3>
       <div className={styles.pricing__grid}>
         <PricingCard
           title="Séance Unique"
           price="65€"
           duration="1 heure / séance"
           description="Idéal pour découvrir la réflexologie"
-          icon="💆"
+          icon="🧑"
         />
 
         <PricingCard
@@ -44,7 +44,7 @@ export default function Pricing() {
         />
       </div>
 
-      <h3 className={styles.pricing__sectionTitle}>Tarifs de Groupe</h3>
+      <h3 id="tarifs-groupe" className={styles.pricing__sectionTitle}>Tarifs de Groupe</h3>
       <div className={styles.pricing__grid}>
         <PricingCard
           title="Séance de groupe - 2 personnes"
@@ -52,7 +52,7 @@ export default function Pricing() {
           duration="1 heure / pers"
           description="Partagez un moment de détente à deux"
           special={true}
-          icon="👥"
+          icon="🧑🧑"
         />
 
         <PricingCard
@@ -61,7 +61,7 @@ export default function Pricing() {
           duration="1 heure / pers"
           description="Bien-être en petit groupe"
           special={true}
-          icon="👥"
+          icon="🧑🧑🧑"
         />
 
         <PricingCard
@@ -70,11 +70,11 @@ export default function Pricing() {
           duration="1 heure / pers"
           description="Partagez une expérience collective"
           special={true}
-          icon="👥"
+          icon="🧑🧑🧑🧑"
         />
       </div>
 
-      <h3 className={styles.pricing__sectionTitle}>Tarifs Sportifs</h3>
+      <h3 id="tarifs-sportifs" className={styles.pricing__sectionTitle}>Tarifs Sportifs</h3>
       <div className={styles.pricing__grid}>
         <PricingCard
           title="Pack COMPÉT"
@@ -104,7 +104,7 @@ export default function Pricing() {
         />
       </div>
 
-      <h3 className={styles.pricing__sectionTitle}>Tarifs Solidaires</h3>
+      <h3 id="tarifs-solidaires" className={styles.pricing__sectionTitle}>Tarifs Solidaires</h3>
       <div className={styles.pricing__solidaryNote}>
         <p>
           💚 Parce que le bien-être doit être accessible à tous, je propose des
@@ -140,7 +140,7 @@ export default function Pricing() {
         />
       </div>
 
-      <h3 className={styles.pricing__sectionTitle}>Offres de Parrainage</h3>
+      <h3 id="offres-parrainage" className={styles.pricing__sectionTitle}>Offres de Parrainage</h3>
       <div className={styles.pricing__referralSection}>
         <div className={styles.pricing__referralCard}>
           <div className={styles.pricing__referralIcon}>🎁</div>
@@ -166,7 +166,7 @@ export default function Pricing() {
         </div>
       </div>
 
-      <h3 className={styles.pricing__sectionTitle}>Tarifs Entreprise</h3>
+      <h3 id="tarifs-entreprise" className={styles.pricing__sectionTitle}>Tarifs Entreprise</h3>
       <div className={styles.pricing__enterpriseCard}>
         <div className={styles.pricing__enterpriseIcon}>🏢</div>
         <h4>Bien-être en entreprise - QVCT</h4>

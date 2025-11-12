@@ -12,8 +12,11 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [isReflexoDropdownOpen, setIsReflexoDropdownOpen] = useState(false);
+  const [isOffersDropdownOpen, setIsOffersDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLUListElement>(null);
+  const offersDropdownRef = useRef<HTMLUListElement>(null);
   const isClosingRef = useRef(false);
+  const offersClosingRef = useRef(false);
   const { token, role } = useSelector((state: RootState) => state.auth);
   const pathname = usePathname();
   const router = useRouter();
@@ -108,6 +111,20 @@ export default function Header() {
     // Réinitialiser le flag après un délai
     setTimeout(() => {
       isClosingRef.current = false;
+    }, 300);
+  };
+
+  const closeOffersDropdown = () => {
+    offersClosingRef.current = true;
+    setIsOffersDropdownOpen(false);
+    if (typeof window !== "undefined" && window.innerWidth <= 1024) {
+      setIsMenuOpen(false);
+    }
+    if (offersDropdownRef.current) {
+      offersDropdownRef.current.classList.remove(styles.dropdownMenu_open);
+    }
+    setTimeout(() => {
+      offersClosingRef.current = false;
     }, 300);
   };
 
@@ -270,16 +287,121 @@ export default function Header() {
                         Bien-être en entreprise
                       </Link>
                     </li>
-                    <li>
+                    <li
+                      className={
+                        pathname === "/public/ofers" ? styles.dropdown : ""
+                      }
+                      onMouseEnter={() => {
+                        if (
+                          window.innerWidth > 1024 &&
+                          pathname === "/public/ofers"
+                        ) {
+                          setIsOffersDropdownOpen(true);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (window.innerWidth > 1024) {
+                          setIsOffersDropdownOpen(false);
+                        }
+                      }}
+                    >
                       <Link
                         href="/public/ofers"
-                        onClick={() => setIsMenuOpen(false)}
                         className={
                           pathname === "/public/ofers" ? styles.active : ""
                         }
+                        onClick={(e) => {
+                          if (
+                            pathname === "/public/ofers" &&
+                            window.innerWidth <= 1024
+                          ) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            if (!offersClosingRef.current) {
+                              setIsOffersDropdownOpen(!isOffersDropdownOpen);
+                            }
+                          }
+                        }}
                       >
                         Les offres
                       </Link>
+                      {pathname === "/public/ofers" && (
+                        <ul
+                          ref={offersDropdownRef}
+                          className={`${styles.dropdownMenu} ${
+                            isOffersDropdownOpen
+                              ? styles.dropdownMenu_open
+                              : ""
+                          }`}
+                        >
+                          <li>
+                            <Link
+                              href="/public/ofers#tarifs-individuels"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                closeOffersDropdown();
+                              }}
+                            >
+                              Tarifs Individuels
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/public/ofers#tarifs-groupe"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                closeOffersDropdown();
+                              }}
+                            >
+                              Tarifs de Groupe
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/public/ofers#tarifs-sportifs"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                closeOffersDropdown();
+                              }}
+                            >
+                              Tarifs Sportifs
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/public/ofers#tarifs-solidaires"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                closeOffersDropdown();
+                              }}
+                            >
+                              Tarifs Solidaires
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/public/ofers#offres-parrainage"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                closeOffersDropdown();
+                              }}
+                            >
+                              Offres de Parrainage
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/public/ofers#tarifs-entreprise"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                closeOffersDropdown();
+                              }}
+                            >
+                              Tarifs Entreprise
+                            </Link>
+                          </li>
+                        </ul>
+                      )}
                     </li>
                     <li>
                       <Link

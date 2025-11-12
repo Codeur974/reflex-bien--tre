@@ -259,16 +259,19 @@
   }
 
   &__icon {
-    font-size: 3rem;
+    font-size: 1.5rem !important;
     margin-bottom: 0.5rem;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    letter-spacing: -0.4em;
+    display: inline-block;
 
     @media (max-width: 480px) {
-      font-size: 2.5rem;
+      font-size: 1.2rem !important;
     }
   }
 
   &__free &__icon {
+    font-size: 1.5rem !important;
     filter: drop-shadow(0 2px 4px rgba(255, 105, 180, 0.3)) hue-rotate(290deg)
       saturate(2);
   }
