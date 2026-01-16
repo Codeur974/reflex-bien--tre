@@ -167,6 +167,42 @@ function ContactForm() {
           {isSubmitting ? "Envoi en cours..." : "Envoyer le message"}
         </button>
       </form>
+
+      <div className={styles.contactForm__contact}>
+        <div className={styles.contactForm__contactCard}>
+          <span className={styles.contactForm__contactIcon}>📞</span>
+          <h3>Téléphone</h3>
+          <a href="tel:0692253885" className={styles.contactForm__contactLink}>
+            06 92 253885
+          </a>
+        </div>
+
+        <div className={styles.contactForm__contactCard}>
+          <span className={styles.contactForm__contactIcon}>📘</span>
+          <h3>Facebook</h3>
+          <a
+            href="https://www.facebook.com/share/1CT6KJca2N/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.contactForm__contactLink}
+          >
+            Suivez-moi
+          </a>
+        </div>
+
+        <div className={styles.contactForm__contactCard}>
+          <span className={styles.contactForm__contactIcon}>💬</span>
+          <h3>WhatsApp</h3>
+          <a
+            href="https://wa.me/262692253885"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.contactForm__contactLink}
+          >
+            Écrivez-moi
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
