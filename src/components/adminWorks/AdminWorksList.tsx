@@ -22,7 +22,9 @@ function AdminWorksList({ onEdit }: AdminWorksListProps) {
   const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
 
   const handleDelete = async (workId: string) => {
-    if (!confirm("Êtes-vous sûr de vouloir supprimer cette photo ?")) return;
+    const work = works.find((w: Work) => w._id === workId);
+    const workTitle = work?.title || "ce travail";
+    if (!confirm(`Êtes-vous sûr de vouloir supprimer "${workTitle}" et toutes ses photos ? Cette action est irréversible.`)) return;
 
     try {
       const response = await fetch(`${API_URL}/api/v1/works/${workId}`, {
