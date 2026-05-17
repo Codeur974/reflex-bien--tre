@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { News } from "@/types/types";
 import axios from "axios";
 import styles from "./newsDetail.module.scss";
+import ZoomModal from "@/components/zoomModal/ZoomModal";
 
 const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:4000";
 
@@ -15,6 +16,7 @@ export default function NewsDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
+  const [brokenImages, setBrokenImages] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     const fetchNewsDetail = async () => {
@@ -68,6 +70,8 @@ export default function NewsDetailPage() {
                 ? file.url
                 : `${backendUrl}${file.url.startsWith("/") ? file.url : "/" + file.url}`;
 
+              if (brokenImages.has(idx)) return null;
+
               return (
                 <div key={idx} className={styles.mediaCard}>
                   <div className={styles.mediaWrapper}>
@@ -80,9 +84,10 @@ export default function NewsDetailPage() {
                       // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={fileUrl}
-                        alt={`Photo ${idx + 1}`}
+                        alt={file.description || `Photo ${idx + 1}`}
                         onClick={() => setZoomedImage(fileUrl)}
                         style={{ cursor: 'pointer' }}
+                        onError={() => setBrokenImages((prev) => new Set(prev).add(idx))}
                       />
                     )}
                   </div>
@@ -103,15 +108,7 @@ export default function NewsDetailPage() {
       </div>
 
       {zoomedImage && (
-        <div className={styles.zoomModal} onClick={() => setZoomedImage(null)}>
-          <div className={styles.zoomModal__content}>
-            <button className={styles.zoomModal__close} onClick={() => setZoomedImage(null)}>
-              ×
-            </button>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={zoomedImage} alt="Zoom" />
-          </div>
-        </div>
+        <ZoomModal src={zoomedImage} onClose={() => setZoomedImage(null)} />
       )}
     </div>
   );

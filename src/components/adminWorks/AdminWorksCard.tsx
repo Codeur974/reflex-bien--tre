@@ -20,7 +20,7 @@ function AdminWorksCard({ work, onEdit, onDelete, onUpdate }: AdminWorksCardProp
     <div className={`${styles.adminWorks__card} ${showFilesManager ? styles.adminWorks__cardModalOpen : ''}`}>
       <div className={styles.adminWorks__cardImage}>
         <img
-          src={`${API_URL}${work.cover.startsWith("/") ? work.cover : `/${work.cover}`}`}
+          src={work.cover.startsWith("http") ? work.cover : `${API_URL}${work.cover.startsWith("/") ? work.cover : `/${work.cover}`}`}
           alt={work.title}
         />
       </div>

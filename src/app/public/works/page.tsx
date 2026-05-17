@@ -9,6 +9,7 @@ import type { AppDispatch, RootState } from "@/store";
 import { fetchWorks } from "@/store/slices/worksSlice";
 import type { Work } from "@/types/types";
 import { isVideoAsset, resolveMediaUrl } from "@/utils/media";
+import ZoomModal from "@/components/zoomModal/ZoomModal";
 
 type WorkWithMedia = Work & {
   mediaUrl: string;
@@ -206,18 +207,7 @@ export default function WorksPage() {
       )}
 
       {zoomedImage && (
-        <div className={styles.zoomModal} onClick={() => setZoomedImage(null)}>
-          <div className={styles.zoomModal__content}>
-            <button
-              className={styles.zoomModal__close}
-              onClick={() => setZoomedImage(null)}
-            >
-              ✕
-            </button>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={zoomedImage} alt="Zoom" />
-          </div>
-        </div>
+        <ZoomModal src={zoomedImage} onClose={() => setZoomedImage(null)} />
       )}
     </div>
   );

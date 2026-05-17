@@ -19,7 +19,10 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
   const files = news.files;
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [description, setDescription] = useState("");
-  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+  const [deletingUrl, setDeletingUrl] = useState<string | null>(null);
+
+  const resolveUrl = (url: string) =>
+    url.startsWith("http") ? url : `${API_URL}${url.startsWith("/") ? url : `/${url}`}`;
 
   const handleSaveDescription = async (fileUrl: string, fileDescription: string) => {
     try {
@@ -33,7 +36,6 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
       });
 
       if (response.ok) {
-        alert("Commentaire mis à jour avec succès !");
         setEditingIndex(null);
         setDescription("");
         onUpdate();
@@ -46,54 +48,28 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
     }
   };
 
-  const handleEdit = (index: number) => {
-    setEditingIndex(index);
-    setDescription(files[index].description || "");
-  };
-
-  const handleCancel = () => {
-    setEditingIndex(null);
-    setDescription("");
-  };
-
-  const handleToggleSelect = (fileUrl: string) => {
-    setSelectedFiles(prev =>
-      prev.includes(fileUrl)
-        ? prev.filter(url => url !== fileUrl)
-        : [...prev, fileUrl]
-    );
-  };
-
-  const handleDeleteSelected = async () => {
-    if (selectedFiles.length === 0) {
-      alert("Aucune photo sélectionnée");
-      return;
-    }
-
-    if (!confirm(`Êtes-vous sûr de vouloir supprimer ${selectedFiles.length} photo(s) ?`)) {
-      return;
-    }
-
+  const handleDeleteFile = async (fileUrl: string) => {
+    if (!confirm("Supprimer cette photo ?")) return;
+    setDeletingUrl(fileUrl);
     try {
-      for (const fileUrl of selectedFiles) {
-        const response = await fetch(`${API_URL}/api/v1/news/${news._id}/file?url=${encodeURIComponent(fileUrl)}`, {
+      const response = await fetch(
+        `${API_URL}/api/v1/news/${news._id}/file?url=${encodeURIComponent(fileUrl)}`,
+        {
           method: "DELETE",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error("Erreur lors de la suppression");
+          headers: { Authorization: `Bearer ${token}` },
         }
-      }
+      );
 
-      alert("Photos supprimées avec succès !");
-      setSelectedFiles([]);
-      onUpdate();
+      if (response.ok) {
+        onUpdate();
+      } else {
+        alert("Erreur lors de la suppression");
+      }
     } catch (error) {
       console.error("Erreur:", error);
-      alert("Erreur lors de la suppression des photos");
+      alert("Erreur lors de la suppression");
+    } finally {
+      setDeletingUrl(null);
     }
   };
 
@@ -103,21 +79,8 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
       <div className={styles.filesManager__modal}>
         <div className={styles.filesManager__header}>
           <h3>Gérer les photos de &quot;{news.title}&quot;</h3>
-          <button onClick={onClose} className={styles.filesManager__closeBtn}>
-            ×
-          </button>
+          <button onClick={onClose} className={styles.filesManager__closeBtn}>×</button>
         </div>
-
-        {selectedFiles.length > 0 && (
-          <div className={styles.filesManager__actions}>
-            <button
-              onClick={handleDeleteSelected}
-              className={styles.filesManager__deleteBtn}
-            >
-              Supprimer {selectedFiles.length} photo(s) sélectionnée(s)
-            </button>
-          </div>
-        )}
 
         <div className={styles.filesManager__content}>
           {files.length === 0 ? (
@@ -126,26 +89,20 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
             <div className={styles.filesManager__grid}>
               {files.map((file, index) => (
                 <div key={index} className={styles.filesManager__item}>
-                  <div className={styles.filesManager__selectWrapper}>
-                    <input
-                      type="checkbox"
-                      checked={selectedFiles.includes(file.url)}
-                      onChange={() => handleToggleSelect(file.url)}
-                      className={styles.filesManager__checkbox}
-                    />
-                  </div>
                   <div className={styles.filesManager__imageWrapper}>
                     {file.type === "image" ? (
-                      <img
-                        src={`${API_URL}${file.url.startsWith("/") ? file.url : `/${file.url}`}`}
-                        alt={`Photo ${index + 1}`}
-                      />
+                      <img src={resolveUrl(file.url)} alt={`Photo ${index + 1}`} />
                     ) : (
-                      <video
-                        src={`${API_URL}${file.url.startsWith("/") ? file.url : `/${file.url}`}`}
-                        controls
-                      />
+                      <video src={resolveUrl(file.url)} controls />
                     )}
+                    <button
+                      className={styles.filesManager__deleteImgBtn}
+                      onClick={() => handleDeleteFile(file.url)}
+                      disabled={deletingUrl === file.url}
+                      title="Supprimer cette photo"
+                    >
+                      {deletingUrl === file.url ? "..." : "✕"}
+                    </button>
                   </div>
 
                   {editingIndex === index ? (
@@ -153,7 +110,7 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
                       <textarea
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
-                        placeholder="Ajouter un commentaire pour cette photo..."
+                        placeholder="Ajouter un commentaire..."
                         rows={3}
                       />
                       <div className={styles.filesManager__editActions}>
@@ -164,7 +121,7 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
                           Sauvegarder
                         </button>
                         <button
-                          onClick={handleCancel}
+                          onClick={() => { setEditingIndex(null); setDescription(""); }}
                           className={styles.filesManager__cancelBtn}
                         >
                           Annuler
@@ -177,7 +134,7 @@ function AdminFilesManager({ news, onClose, onUpdate }: AdminFilesManagerProps) 
                         {file.description || <em>Aucun commentaire</em>}
                       </p>
                       <button
-                        onClick={() => handleEdit(index)}
+                        onClick={() => { setEditingIndex(index); setDescription(file.description || ""); }}
                         className={styles.filesManager__editBtn}
                       >
                         {file.description ? "Modifier" : "Ajouter"} commentaire

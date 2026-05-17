@@ -33,12 +33,21 @@ function Activity() {
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
-  // Filtrer les actualités futures uniquement (à partir d'aujourd'hui)
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+
   const futureNews = sortedNews.filter(
     (item) => new Date(item.date) >= today
   );
+
+  const pastNews = sortedNews.filter(
+    (item) => new Date(item.date) < today
+  );
+
+  const combinedWorks = [
+    ...pastNews.map((item) => ({ ...item, basePath: "/public/news" })),
+    ...sortedWorks.map((item) => ({ ...item, basePath: "/public/works" })),
+  ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <div className={styles.container}>
@@ -49,7 +58,7 @@ function Activity() {
             {newsLoading && <p>Chargement...</p>}
             {newsError && <p>Erreur: {newsError}</p>}
             {futureNews.length > 0 ? (
-              <Slider items={futureNews} />
+              <Slider items={futureNews} href="/public/news" />
             ) : (
               <div className={styles.activity__noEvent}>
                 <Image
@@ -72,9 +81,9 @@ function Activity() {
           <div className={styles.activity__works}>
             {worksLoading && <p>Chargement...</p>}
             {worksError && <p>Erreur: {worksError}</p>}
-            {sortedWorks.length > 0 && (
+            {combinedWorks.length > 0 && (
               <>
-                <Slider items={sortedWorks} />
+                <Slider items={combinedWorks} />
                 <div style={{ marginTop: "1rem", textAlign: "center" }}>
                   <Link href="/public/works" className={styles.linkToWorks}>
                     Voir toutes les photos

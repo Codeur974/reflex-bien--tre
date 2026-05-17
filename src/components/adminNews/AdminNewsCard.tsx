@@ -20,7 +20,7 @@ function AdminNewsCard({ news, onEdit, onDelete, onUpdate }: AdminNewsCardProps)
     <div className={`${styles.adminNews__card} ${showFilesManager ? styles.adminNews__cardModalOpen : ''}`}>
       <div className={styles.adminNews__cardImage}>
         <img
-          src={`${API_URL}${news.cover.startsWith("/") ? news.cover : `/${news.cover}`}`}
+          src={news.cover.startsWith("http") ? news.cover : `${API_URL}${news.cover.startsWith("/") ? news.cover : `/${news.cover}`}`}
           alt={news.title}
         />
       </div>

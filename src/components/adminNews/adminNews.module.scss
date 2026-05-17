@@ -444,12 +444,42 @@
     height: 200px;
     overflow: hidden;
     background: rgba(95, 215, 176, 0.1);
+    position: relative;
 
     img,
     video {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+  }
+
+  &__deleteImgBtn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(231, 76, 60, 0.85);
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    z-index: 2;
+    line-height: 1;
+
+    &:hover {
+      background: #c0392b;
+    }
+
+    &:disabled {
+      background: #999;
+      cursor: wait;
     }
   }
 
