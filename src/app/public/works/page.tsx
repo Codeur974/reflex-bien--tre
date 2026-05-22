@@ -7,13 +7,15 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./worksPage.module.scss";
 import type { AppDispatch, RootState } from "@/store";
 import { fetchWorks } from "@/store/slices/worksSlice";
-import type { Work } from "@/types/types";
+import { fetchNews } from "@/store/slices/newsSlice";
+import type { Work, News } from "@/types/types";
 import { isVideoAsset, resolveMediaUrl } from "@/utils/media";
 import ZoomModal from "@/components/zoomModal/ZoomModal";
 
-type WorkWithMedia = Work & {
+type ItemWithMedia = (Work | News) & {
   mediaUrl: string;
   isVideo: boolean;
+  itemType: "work" | "news";
 };
 
 const CARD_IMAGE_SIZES =
@@ -38,43 +40,49 @@ const normalizeFilePath = (path: string) => {
 export default function WorksPage() {
   const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
-  const { works, isLoading, error } = useSelector(
+  const { works, isLoading: worksLoading, error: worksError } = useSelector(
     (state: RootState) => state.works
   );
+  const { news, isLoading: newsLoading } = useSelector(
+    (state: RootState) => state.news
+  );
 
-  const [selectedWork, setSelectedWork] = useState<WorkWithMedia | null>(null);
+  const [selectedItem, setSelectedItem] = useState<ItemWithMedia | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
   useEffect(() => {
     dispatch(fetchWorks());
+    dispatch(fetchNews());
   }, [dispatch]);
 
-  const worksWithMedia: WorkWithMedia[] = useMemo(
-    () =>
-      (works ?? []).map((item) => ({
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const allItems: ItemWithMedia[] = useMemo(() => {
+    const workItems = (works ?? []).map((item) => ({
+      ...item,
+      mediaUrl: normalizeFilePath(item.cover ?? ""),
+      isVideo: isVideoAsset(item.cover),
+      itemType: "work" as const,
+    }));
+    const pastNewsItems = (news ?? [])
+      .filter((item) => new Date(item.date) < today)
+      .map((item) => ({
         ...item,
         mediaUrl: normalizeFilePath(item.cover ?? ""),
         isVideo: isVideoAsset(item.cover),
-      })),
-    [works]
-  );
-
-  useEffect(() => {
-    if (!selectedWork) return;
-    const updated = worksWithMedia.find(
-      (work) => work._id === selectedWork._id
+        itemType: "news" as const,
+      }));
+    return [...workItems, ...pastNewsItems].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
-    if (!updated) {
-      setSelectedWork(null);
-    } else if (updated !== selectedWork) {
-      setSelectedWork(updated);
-    }
-  }, [selectedWork, worksWithMedia]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [works, news]);
 
-  if (isLoading)
+  if (worksLoading || newsLoading)
     return <div className={styles.loading}>Chargement des photos...</div>;
-  if (error) return <div className={styles.error}>Erreur : {error}</div>;
-  if (!worksWithMedia.length)
+  if (worksError) return <div className={styles.error}>Erreur : {worksError}</div>;
+  if (!allItems.length)
     return <div className={styles.error}>Aucune photo trouvée.</div>;
 
   return (
@@ -86,11 +94,11 @@ export default function WorksPage() {
       </button>
 
       <div className={styles.worksGrid}>
-        {worksWithMedia.map((item) => (
+        {allItems.map((item) => (
           <div
             key={item._id}
             className={styles.workCard}
-            onClick={() => setSelectedWork(item)}
+            onClick={() => setSelectedItem(item)}
           >
             <div className={styles.workCard__image}>
               {item.cover ? (
@@ -131,28 +139,28 @@ export default function WorksPage() {
         ))}
       </div>
 
-      {selectedWork && (
-        <div className={styles.modal} onClick={() => setSelectedWork(null)}>
+      {selectedItem && (
+        <div className={styles.modal} onClick={() => setSelectedItem(null)}>
           <div
             className={styles.modal__content}
             onClick={(e) => e.stopPropagation()}
           >
             <button
               className={styles.modal__close}
-              onClick={() => setSelectedWork(null)}
+              onClick={() => setSelectedItem(null)}
             >
               ✕
             </button>
             <div className={styles.header}>
-              <h2>{selectedWork.title}</h2>
-              {selectedWork.description && (
+              <h2>{selectedItem.title}</h2>
+              {selectedItem.description && (
                 <p className={styles.description}>
-                  {selectedWork.description}
+                  {selectedItem.description}
                 </p>
               )}
               <p className={styles.date}>
                 <strong>Date :</strong>{" "}
-                {new Date(selectedWork.date).toLocaleDateString("fr-FR", {
+                {new Date(selectedItem.date).toLocaleDateString("fr-FR", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
@@ -161,8 +169,8 @@ export default function WorksPage() {
             </div>
 
             <div className={styles.gallery}>
-              {selectedWork.files && selectedWork.files.length > 0 ? (
-                selectedWork.files.map((file, idx) => {
+              {selectedItem.files && selectedItem.files.length > 0 ? (
+                selectedItem.files.map((file, idx) => {
                   const fileUrl = normalizeFilePath(file.url);
                   return (
                     <div key={idx} className={styles.mediaCard}>
@@ -198,7 +206,7 @@ export default function WorksPage() {
                 })
               ) : (
                 <div className={styles.emptyState}>
-                  Aucun média pour cette intervention.
+                  Aucun média pour cet élément.
                 </div>
               )}
             </div>

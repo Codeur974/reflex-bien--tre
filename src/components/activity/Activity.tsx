@@ -45,8 +45,8 @@ function Activity() {
   );
 
   const combinedWorks = [
-    ...pastNews.map((item) => ({ ...item, basePath: "/public/news" })),
-    ...sortedWorks.map((item) => ({ ...item, basePath: "/public/works" })),
+    ...pastNews.map((item) => ({ ...item })),
+    ...sortedWorks.map((item) => ({ ...item })),
   ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
