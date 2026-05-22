@@ -20,6 +20,11 @@ const nextConfig = {
         hostname: "pat-reflexo-backend.onrender.com",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
     ],
   },
 };
