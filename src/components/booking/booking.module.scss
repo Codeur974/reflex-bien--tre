@@ -1,0 +1,179 @@
+.bookingCalendar {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  &__status,
+  &__error,
+  &__success {
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 20px;
+  }
+
+  &__error {
+    color: #dc3545;
+  }
+
+  &__success {
+    color: #3d9b86;
+    font-weight: 600;
+    background: #eafaf4;
+    border-radius: 12px;
+    padding: 30px;
+  }
+
+  &__days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+
+  &__day {
+    padding: 12px 20px;
+    border: 2px solid #5fd7b0;
+    border-radius: 30px;
+    background: white;
+    color: #3d9b86;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: #5fd7b0;
+      color: white;
+    }
+
+    &_active {
+      background: #5fd7b0;
+      color: white;
+    }
+
+    &_full {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: #ccc;
+      color: #999;
+    }
+  }
+
+  &__slots {
+    text-align: center;
+
+    h3 {
+      color: #3d9b86;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__slotList {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__slot {
+    padding: 15px 25px;
+    border: 2px solid #4fc3f7;
+    border-radius: 12px;
+    background: white;
+    color: #0288d1;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: #4fc3f7;
+      color: white;
+    }
+
+    &_taken {
+      opacity: 0.5;
+      cursor: not-allowed;
+      border-color: #ccc;
+      color: #999;
+      background: #f5f5f5;
+    }
+  }
+}
+
+.bookingForm {
+  max-width: 500px;
+  margin: 0 auto;
+
+  &__title {
+    text-align: center;
+    color: #3d9b86;
+    margin-bottom: 20px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-weight: 600;
+      color: #5a7a8f;
+    }
+
+    input {
+      padding: 12px 15px;
+      border: 1px solid #d0e5df;
+      border-radius: 8px;
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+        border-color: #5fd7b0;
+      }
+    }
+  }
+
+  &__error {
+    color: #dc3545;
+    text-align: center;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  &__cancelBtn,
+  &__submitBtn {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+  }
+
+  &__cancelBtn {
+    background: #eee;
+    color: #555;
+  }
+
+  &__submitBtn {
+    background: linear-gradient(135deg, #5fd7b0, #4fc3f7);
+    color: white;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

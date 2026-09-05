@@ -1,0 +1,39 @@
+.rendezVous {
+  margin: 0;
+  padding: 2rem 1rem 4rem;
+  background: linear-gradient(to bottom, #f8fcfb 0%, #ffffff 100%);
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  &__title {
+    text-align: center;
+    color: #3d9b86;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+  }
+
+  &__intro {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    text-align: center;
+    color: #5a7a8f;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  &__content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fafdfb;
+    border-radius: 16px;
+    box-shadow: 0 6px 30px rgba(95, 215, 176, 0.1);
+
+    @media (max-width: 768px) {
+      padding: 1.5rem 1rem;
+      border-radius: 12px;
+    }
+  }
+}

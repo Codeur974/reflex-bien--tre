@@ -3,6 +3,7 @@
 import { useState } from "react";
 import AdminWorks from "@/components/adminWorks/AdminWorks";
 import AdminNews from "@/components/adminNews/AdminNews";
+import AdminBooking from "@/components/adminBooking/AdminBooking";
 import styles from "./adminPage.module.scss";
 
 export default function AdminPage() {
@@ -65,6 +66,20 @@ export default function AdminPage() {
         {openSection === "works" && (
           <div className={styles.sectionContent}>
             <AdminWorks />
+          </div>
+        )}
+      </div>
+
+      <div className={styles.section}>
+        <h2
+          className={styles.sectionTitle}
+          onClick={() => toggleSection("booking")}
+        >
+          {openSection === "booking" ? "▼" : "►"} Rendez-vous
+        </h2>
+        {openSection === "booking" && (
+          <div className={styles.sectionContent}>
+            <AdminBooking />
           </div>
         )}
       </div>

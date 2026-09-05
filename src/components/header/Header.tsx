@@ -11,6 +11,7 @@ import styles from "./header.module.scss";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [hasRdvAccess, setHasRdvAccess] = useState(false);
   const [isReflexoDropdownOpen, setIsReflexoDropdownOpen] = useState(false);
   const [isOffersDropdownOpen, setIsOffersDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLUListElement>(null);
@@ -25,6 +26,11 @@ export default function Header() {
   // S'assurer que le composant est monté côté client
   useEffect(() => {
     setIsMounted(true);
+    try {
+      setHasRdvAccess(localStorage.getItem("rdvAccess") === "true");
+    } catch {
+      // localStorage indisponible (navigation privée, etc.)
+    }
   }, []);
 
   // Forcer la synchronisation entre l'état et le DOM
@@ -192,6 +198,19 @@ export default function Header() {
                         Accueil
                       </Link>
                     </li>
+                    {hasRdvAccess && (
+                      <li>
+                        <Link
+                          href="/public/rendez-vous"
+                          onClick={() => setIsMenuOpen(false)}
+                          className={
+                            pathname === "/public/rendez-vous" ? styles.active : ""
+                          }
+                        >
+                          Prendre RDV
+                        </Link>
+                      </li>
+                    )}
                     <li
                       className={
                         pathname === "/public/reflexo" ? styles.dropdown : ""

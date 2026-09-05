@@ -1,0 +1,91 @@
+.adminBooking {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  &__block {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    h3 {
+      color: #3d9b86;
+      margin-bottom: 15px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+
+    input {
+      padding: 10px 15px;
+      border: 1px solid #d0e5df;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #5fd7b0, #4fc3f7);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f9fdfb;
+    border-radius: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &__itemActions {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__confirmBtn,
+  &__refuseBtn,
+  &__deleteBtn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  &__confirmBtn {
+    background: #5fd7b0;
+    color: white;
+  }
+
+  &__refuseBtn,
+  &__deleteBtn {
+    background: #f5f5f5;
+    color: #dc3545;
+  }
+}
