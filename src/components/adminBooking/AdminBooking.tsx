@@ -21,6 +21,35 @@ export default function AdminBooking() {
   const [isCreating, setIsCreating] = useState(false);
   const [createMessage, setCreateMessage] = useState("");
 
+  const [rdvUrl, setRdvUrl] = useState("");
+  const [shareMessage, setShareMessage] = useState("");
+
+  useEffect(() => {
+    setRdvUrl(`${window.location.origin}/rendez-vous`);
+  }, []);
+
+  const handleShareLink = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Prise de rendez-vous",
+          text: "Prenez rendez-vous en ligne avec Patricia :",
+          url: rdvUrl,
+        });
+      } catch {
+        // partage annulé par l'utilisateur, rien à faire
+      }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(rdvUrl);
+      setShareMessage("✅ Lien copié !");
+      setTimeout(() => setShareMessage(""), 3000);
+    } catch {
+      setShareMessage("❌ Impossible de copier le lien.");
+    }
+  };
+
   const [upcomingSlots, setUpcomingSlots] = useState<Slot[]>([]);
   const [pendingSlots, setPendingSlots] = useState<Slot[]>([]);
   const [confirmedSlots, setConfirmedSlots] = useState<Slot[]>([]);
@@ -224,6 +253,15 @@ export default function AdminBooking() {
 
   return (
     <div className={styles.adminBooking}>
+      <div className={styles.adminBooking__block}>
+        <h3>Lien de prise de rendez-vous</h3>
+        <p className={styles.adminBooking__shareLink}>{rdvUrl}</p>
+        <button className={styles.adminBooking__shareBtn} onClick={handleShareLink}>
+          Partager le lien
+        </button>
+        {shareMessage && <p>{shareMessage}</p>}
+      </div>
+
       <div className={styles.adminBooking__block}>
         <h3>Ouvrir une demi-journée (9h, 10h, 11h)</h3>
         <form onSubmit={handleCreateDay} className={styles.adminBooking__form}>

@@ -15,6 +15,26 @@
     }
   }
 
+  &__shareLink {
+    font-family: monospace;
+    background: #f5f5f5;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 6px;
+    word-break: break-all;
+    margin-bottom: 12px;
+  }
+
+  &__shareBtn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #5fd7b0, #4fc3f7);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
   &__form {
     display: flex;
     gap: 12px;
