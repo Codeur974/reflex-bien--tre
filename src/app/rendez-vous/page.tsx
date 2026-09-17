@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import Styles from "./rendezVous.module.scss";
 import BookingCalendar from "@/components/booking/BookingCalendar";
+
+export const metadata: Metadata = {
+  title: "Prise de rendez-vous | Reflex'Bien-être",
+  description:
+    "Réservez votre séance de réflexologie avec Patricia Sermande : choisissez un jour et un créneau disponible.",
+  openGraph: {
+    title: "Prise de rendez-vous | Reflex'Bien-être",
+    description:
+      "Réservez votre séance de réflexologie avec Patricia Sermande : choisissez un jour et un créneau disponible.",
+    type: "website",
+  },
+};
 
 export default function RendezVousPage() {
   return (

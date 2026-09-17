@@ -201,10 +201,10 @@ export default function Header() {
                     {hasRdvAccess && (
                       <li>
                         <Link
-                          href="/public/rendez-vous"
+                          href="/rendez-vous"
                           onClick={() => setIsMenuOpen(false)}
                           className={
-                            pathname === "/public/rendez-vous" ? styles.active : ""
+                            pathname === "/rendez-vous" ? styles.active : ""
                           }
                         >
                           Prendre RDV
