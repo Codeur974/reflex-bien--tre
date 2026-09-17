@@ -70,7 +70,8 @@
 
   &__confirmBtn,
   &__refuseBtn,
-  &__deleteBtn {
+  &__deleteBtn,
+  &__duplicateBtn {
     padding: 8px 16px;
     border: none;
     border-radius: 6px;
@@ -87,5 +88,10 @@
   &__deleteBtn {
     background: #f5f5f5;
     color: #dc3545;
+  }
+
+  &__duplicateBtn {
+    background: #eef7ff;
+    color: #0288d1;
   }
 }

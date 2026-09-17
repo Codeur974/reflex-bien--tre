@@ -29,9 +29,6 @@ export default function LoginPage() {
         ? { email: identifier, password } // Si admin, envoyer "email"
         : { username: identifier, password }; // Si utilisateur, envoyer "username"
 
-    console.log("URL de l'API :", process.env.NEXT_PUBLIC_API_URL);
-    console.log("Données envoyées :", requestBody);
-
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/api/v1/user/login`,
@@ -44,7 +41,6 @@ export default function LoginPage() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log("Connexion réussie :", data);
         dispatch(login({ token: data.body.token, role: data.body.role })); // Met à jour Redux avec les données utilisateur
 
         // Redirige en fonction du rôle

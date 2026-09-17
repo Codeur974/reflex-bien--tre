@@ -130,19 +130,30 @@ export default function BookingCalendar() {
         <div className={styles.bookingCalendar__slots}>
           <h3>Créneaux du {formatDayLabel(selectedDate)}</h3>
           <div className={styles.bookingCalendar__slotList}>
-            {slotsByDate[selectedDate].map((slot) => (
-              <button
-                key={slot.id}
-                className={`${styles.bookingCalendar__slot} ${
-                  slot.status !== "available" ? styles.bookingCalendar__slot_taken : ""
-                }`}
-                disabled={slot.status !== "available"}
-                onClick={() => setSelectedSlot(slot)}
-              >
-                {slot.time}
-                {slot.status !== "available" && <span> — pris</span>}
-              </button>
-            ))}
+            {Object.entries(
+              slotsByDate[selectedDate].reduce<Record<string, Slot[]>>((acc, slot) => {
+                if (!acc[slot.time]) acc[slot.time] = [];
+                acc[slot.time].push(slot);
+                return acc;
+              }, {})
+            )
+              .sort(([timeA], [timeB]) => timeA.localeCompare(timeB))
+              .map(([time, timeSlots]) => {
+                const availableSlot = timeSlots.find((s) => s.status === "available");
+                return (
+                  <button
+                    key={time}
+                    className={`${styles.bookingCalendar__slot} ${
+                      !availableSlot ? styles.bookingCalendar__slot_taken : ""
+                    }`}
+                    disabled={!availableSlot}
+                    onClick={() => availableSlot && setSelectedSlot(availableSlot)}
+                  >
+                    {time}
+                    {!availableSlot && <span> — pris</span>}
+                  </button>
+                );
+              })}
           </div>
         </div>
       )}

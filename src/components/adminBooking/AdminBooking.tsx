@@ -120,6 +120,71 @@ export default function AdminBooking() {
     }
   };
 
+  const handleDuplicateDay = async (dateKey: string) => {
+    try {
+      const response = await fetch(`${API_URL}/api/v1/slots/duplicate-day`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ date: dateKey }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        fetchData();
+      } else {
+        setActionMessage(`❌ ${data.message}`);
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+    }
+  };
+
+  const handleUndoubleDay = async (dateKey: string) => {
+    try {
+      const response = await fetch(`${API_URL}/api/v1/slots/undouble-day`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ date: dateKey }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        fetchData();
+      } else {
+        setActionMessage(`❌ ${data.message}`);
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+    }
+  };
+
+  const handleDeleteDay = async (dateKey: string) => {
+    if (!confirm("Supprimer tous les créneaux encore disponibles de cette demi-journée ?"))
+      return;
+    try {
+      const response = await fetch(`${API_URL}/api/v1/slots/day`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ date: dateKey }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        fetchData();
+      } else {
+        setActionMessage(`❌ ${data.message}`);
+      }
+    } catch (error) {
+      console.error("Erreur:", error);
+    }
+  };
+
   const handleRefuse = async (id: string) => {
     if (!confirm("Refuser cette demande de rendez-vous ?")) return;
     try {
@@ -143,6 +208,19 @@ export default function AdminBooking() {
     });
 
   const availableSlots = upcomingSlots.filter((s) => s.status === "available");
+
+  // Demi-journées à venir groupées par date, pour proposer de doubler la capacité
+  // (dispo + prises) sur toute la demi-journée en une seule action.
+  const slotsByDate = upcomingSlots.reduce<Record<string, Slot[]>>((acc, slot) => {
+    const dateKey = slot.date.slice(0, 10);
+    if (!acc[dateKey]) acc[dateKey] = [];
+    acc[dateKey].push(slot);
+    return acc;
+  }, {});
+  const upcomingDates = Object.keys(slotsByDate).sort();
+
+  // Le créneau 12h n'existe que si la collègue a été ajoutée sur cette demi-journée
+  const hasColleague = (daySlots: Slot[]) => daySlots.some((s) => s.time === "12:00");
 
   return (
     <div className={styles.adminBooking}>
@@ -211,6 +289,48 @@ export default function AdminBooking() {
                   {formatDate(slot.date)} à {slot.time} — {slot.client?.firstName}{" "}
                   {slot.client?.lastName} ({slot.client?.phone})
                 </span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className={styles.adminBooking__block}>
+        <h3>Demi-journées à venir</h3>
+        {isLoading ? (
+          <p>Chargement...</p>
+        ) : upcomingDates.length === 0 ? (
+          <p>Aucune demi-journée ouverte à venir.</p>
+        ) : (
+          <ul className={styles.adminBooking__list}>
+            {upcomingDates.map((dateKey) => (
+              <li key={dateKey} className={styles.adminBooking__item}>
+                <span>{formatDate(dateKey)}</span>
+                <div className={styles.adminBooking__itemActions}>
+                  {!hasColleague(slotsByDate[dateKey]) ? (
+                    <button
+                      className={styles.adminBooking__duplicateBtn}
+                      onClick={() => handleDuplicateDay(dateKey)}
+                      title="Ajoute une 2e place sur 9h/10h/11h + ouvre le créneau 12h, réservés à la collègue qui vient aider"
+                    >
+                      + Collègue sur cette demi-journée
+                    </button>
+                  ) : (
+                    <button
+                      className={styles.adminBooking__refuseBtn}
+                      onClick={() => handleUndoubleDay(dateKey)}
+                      title="Retire les places de la collègue (dont le créneau 12h), là où elles n'ont pas déjà été réservées"
+                    >
+                      Retirer la collègue
+                    </button>
+                  )}
+                  <button
+                    className={styles.adminBooking__deleteBtn}
+                    onClick={() => handleDeleteDay(dateKey)}
+                  >
+                    Supprimer la demi-journée
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
