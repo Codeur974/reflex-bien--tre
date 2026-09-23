@@ -248,8 +248,10 @@ export default function AdminBooking() {
   }, {});
   const upcomingDates = Object.keys(slotsByDate).sort();
 
-  // Le créneau 12h n'existe que si la collègue a été ajoutée sur cette demi-journée
-  const hasColleague = (daySlots: Slot[]) => daySlots.some((s) => s.time === "12:00");
+  // Le créneau 12h30 n'existe que si la collègue a été ajoutée sur cette demi-journée
+  // (12:00 reste géré pour les demi-journées déjà ouvertes avant le changement d'horaire)
+  const hasColleague = (daySlots: Slot[]) =>
+    daySlots.some((s) => s.time === "12:00" || s.time === "12:30");
 
   return (
     <div className={styles.adminBooking}>
